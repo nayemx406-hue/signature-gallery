@@ -10,7 +10,7 @@ app = Flask(__name__)
 CORS(app)
 
 app.secret_key = "my-secret-key-123"
-ADMIN_PASSWORD = "তোমার_দেওয়া_password"
+ADMIN_PASSWORD = "@Signature_Xallery00$"
 
 
 def get_db():

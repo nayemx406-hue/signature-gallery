@@ -5885,3 +5885,50 @@ body {
     background: rgba(212,175,55,0.08);
 }
 
+
+/* FINAL PAYMENT RADIO ALIGN FIX */
+
+.payment-options {
+    width:100%;
+}
+
+.payment-options .payment-option {
+    display:flex !important;
+    align-items:center !important;
+    justify-content:flex-start !important;
+    flex-direction:row !important;
+    width:100% !important;
+    height:70px !important;
+    padding:0 20px !important;
+    margin-bottom:15px !important;
+}
+
+.payment-options .payment-option input[type="radio"] {
+    appearance:none;
+    -webkit-appearance:none;
+    width:22px !important;
+    height:22px !important;
+    border:2px solid #d4af37;
+    border-radius:50%;
+    display:block !important;
+    position:relative !important;
+    flex:none !important;
+}
+
+.payment-options .payment-option input[type="radio"]:checked::after {
+    content:"";
+    width:10px;
+    height:10px;
+    background:#d4af37;
+    border-radius:50%;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+
+.payment-options .payment-option span {
+    margin:0 !important;
+    padding:0 !important;
+}
+

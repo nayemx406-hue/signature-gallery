@@ -5846,13 +5846,42 @@ body {
     flex: 0 0 auto !important;
 }
 
-.payment-options .payment-option span {
-    display: block !important;
-    color: white !important;
-    font-size: 18px !important;
+
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 15px;
 }
 
-.payment-options .payment-option:has(input:checked) {
-    border: 2px solid #d4af37 !important;
+.payment-option {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+    width: 100%;
+    min-height: 70px;
+    padding: 0 25px;
+    border: 1px solid #444;
+    border-radius: 14px;
+    background: #151515;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.payment-option input {
+    width: 22px;
+    height: 22px;
+    margin: 0;
+}
+
+.payment-option span {
+    font-size: 20px;
+    color: #eee;
+}
+
+.payment-option:has(input:checked) {
+    border-color: #d4af37;
+    background: rgba(212,175,55,0.08);
 }
 

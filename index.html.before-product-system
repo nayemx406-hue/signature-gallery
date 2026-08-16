@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MY SHOP</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header>
+    <a href="#home" class="brand-name">SIGNATURE <span>GALLERY</span></a>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#shop">Shop</a>
+        <a href="#contact">Contact</a>
+        <button class="cart-button" onclick="openCart()">
+            🛒 Cart <span id="cartCount">0</span>
+        </button>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <div class="hero-image"></div>
+</section>
+
+<section class="hero-info">
+    <span>THE NEW SEASON • 2026</span>
+    <h1>Premium Style.<br><em>Made For You.</em></h1>
+    <p>Discover our exclusive collection.</p>
+    <a href="#shop" class="hero-btn">ORDER NOW <b>→</b></a>
+
+    <div class="hero-dots">
+        <b class="active"></b>
+        <b></b>
+        <b></b>
+    </div>
+</section>
+
+<section id="shop">
+    <h2>Featured Products</h2>
+
+    <div class="products" id="productList"></div>
+</section>
+
+<!-- CART -->
+<div class="cart-overlay" id="cartOverlay">
+
+    <div class="cart-box">
+
+        <button class="close-cart" onclick="closeCart()">✕</button>
+
+        <h2>Your Cart</h2>
+
+        <div id="cartItems"></div>
+
+        <div class="cart-total">
+            <span>Total</span>
+            <strong>৳ <span id="cartTotal">0</span></strong>
+        </div>
+
+        <button class="checkout-button" onclick="checkout()">
+            Checkout
+        </button>
+
+    </div>
+
+</div>
+
+<section id="contact">
+    <div class="contact-inner">
+        <h2>Contact Us</h2>
+        <p>For orders and delivery information, contact us.</p>
+
+        <div class="contact-links">
+            <a href="https://www.facebook.com/signaturegallery.syl"
+               class="contact-link facebook-link"
+               target="_blank"
+               rel="noopener">
+                <span class="fb-icon">f</span> Facebook Page
+            </a>
+
+            <a href="https://wa.me/8801717721716"
+               class="contact-link whatsapp-link"
+               target="_blank"
+               rel="noopener">
+                <span class="wa-icon">◉</span> WhatsApp
+            </a>
+        </div>
+
+        <div class="contact-numbers">
+            <a href="tel:+8801717721716"><span class="info-icon">📞</span><span><strong>Proprietor — JUYEL AHMED</strong><small>+880 1717-721716</small></span></a>
+            <a href="tel:+8801722877679"><span class="info-icon">📞</span><span><strong>Manager — ALAL AHMED</strong><small>+880 1722-877679</small></span></a>
+        </div>
+
+        <div class="shop-location">
+            <span class="location-pin" aria-hidden="true">●</span>
+            <div>
+                <strong>Blue Water Shopping City (2nd Floor)</strong>
+                <span>Shop No. 227, Zindabazar Point, Sylhet, Bangladesh</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="developer-info">
+    <p class="developer-label">DEVELOPED BY</p>
+    <h3><span class="developer-icon">♙</span> MD NAYEM AHMED</h3>
+    <a href="tel:01835207419"><span class="developer-info-icon">📞</span> 01835207419</a>
+    <a href="mailto:nayemx406@gmail.com"><span class="developer-info-icon">✉</span> nayemx406@gmail.com</a>
+</section>
+
+<footer>
+    <p>© 2026 MY SHOP</p>
+</footer>
+
+
+</body>
+</html>
+
+<!-- CHECKOUT -->
+
+<div class="checkout-overlay" id="checkoutOverlay">
+
+    <div class="checkout-box">
+
+        <button class="close-checkout" onclick="closeCheckout()">✕</button>
+
+        <h2>Checkout</h2>
+        <p class="checkout-subtitle">Enter your delivery information</p>
+
+        <form id="checkoutForm">
+
+            <label>Full Name</label>
+            <input
+                type="text"
+                id="customerName"
+                placeholder="Your name"
+                required
+            >
+
+            <label>Phone Number</label>
+            <input
+                type="tel"
+                id="customerPhone"
+                placeholder="01XXXXXXXXX"
+                required
+            >
+
+            <label>District</label>
+            <select id="district" required>
+                <option value="">Select District</option>
+                <option>Sylhet</option>
+                <option>Dhaka</option>
+                <option>Chattogram</option>
+                <option>Rajshahi</option>
+                <option>Khulna</option>
+                <option>Barishal</option>
+                <option>Rangpur</option>
+                <option>Mymensingh</option>
+            </select>
+
+            <label>Delivery Area</label>
+
+            <div class="delivery-options">
+
+                <label class="delivery-option">
+                    <input
+                        type="radio"
+                        name="delivery"
+                        value="inside"
+                        checked
+                        onchange="updateDelivery()"
+                    >
+                    <span>Inside Sylhet</span>
+                    <strong>৳ 60</strong>
+                </label>
+
+                <label class="delivery-option">
+                    <input
+                        type="radio"
+                        name="delivery"
+                        value="outside"
+                        onchange="updateDelivery()"
+                    >
+                    <span>Outside Sylhet</span>
+                    <strong>৳ 120</strong>
+                </label>
+
+            </div>
+
+            <label>Delivery Address</label>
+            <textarea
+                id="address"
+                placeholder="House, Road, Area..."
+                required
+            ></textarea>
+
+            <div class="order-summary">
+                <div>
+                    <span>Products</span>
+                    <strong>৳ <span id="checkoutSubtotal">0</span></strong>
+                </div>
+
+                <div>
+                    <span>Delivery</span>
+                    <strong>৳ <span id="deliveryCharge">60</span></strong>
+                </div>
+
+                <div class="grand-total">
+                    <span>Total</span>
+                    <strong>৳ <span id="checkoutTotal">0</span></strong>
+                </div>
+            </div>
+
+            <button type="submit" class="place-order-button">
+                Place Order
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- ORDER CONFIRMATION -->
+
+<div class="confirmation-overlay" id="confirmationOverlay">
+
+    <div class="confirmation-box">
+
+        <div class="success-icon">✓</div>
+
+        <h2>Order Confirmed!</h2>
+
+        <p class="confirmation-text">
+            Thank you for your order.
+        </p>
+
+        <div class="order-id-box">
+            Order ID
+            <strong id="orderId">-</strong>
+        </div>
+
+        <div id="confirmationDetails"></div>
+
+        <button
+            class="close-confirmation"
+            onclick="closeConfirmation()">
+            Done
+        </button>
+
+    </div>
+
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/script.js"></script>

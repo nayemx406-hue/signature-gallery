@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f5f7;
+            color: #111;
+        }
+
+        header {
+            background: #111;
+            color: white;
+            padding: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .admin {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+
+        .admin-order {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .admin-order h3 {
+            margin-top: 0;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            background: #e8f7ed;
+            color: #16803c;
+            font-weight: bold;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Shop Admin Dashboard</h1>
+</header>
+
+<section class="admin">
+    <h2>Order List</h2>
+
+    <div id="orders">
+        <div class="loading">Loading orders...</div>
+    </div>
+</section>
+
+<script>
+async function loadOrders() {
+    const container = document.getElementById("orders");
+
+    try {
+        const response = await fetch("/api/orders");
+
+        if (!response.ok) {
+            throw new Error("Failed to load orders");
+        }
+
+        const orders = await response.json();
+
+        if (orders.length === 0) {
+            container.innerHTML = "<p>No orders yet.</p>";
+            return;
+        }
+
+        container.innerHTML = "";
+
+        orders.forEach(order => {
+            container.innerHTML += `
+                <div class="admin-order">
+
+                    <h3>Order #${order.order_id}</h3>
+
+                    <p>
+                        <strong>Customer:</strong>
+                        ${order.customer_name}
+                    </p>
+
+                    <p>
+                        <strong>Phone:</strong>
+                        ${order.phone}
+                    </p>
+
+                    <p>
+                        <strong>District:</strong>
+                        ${order.district}
+                    </p>
+
+                    <p>
+                        <strong>Address:</strong>
+                        ${order.address}
+                    </p>
+
+                    <p>
+                        <strong>Delivery:</strong>
+                        ${order.delivery_type === "inside"
+                            ? "Inside Sylhet"
+                            : "Outside Sylhet"}
+                    </p>
+
+                    <p>
+                        <strong>Subtotal:</strong>
+                        ৳ ${Number(order.subtotal).toLocaleString()}
+                    </p>
+
+                    <p>
+                        <strong>Delivery Charge:</strong>
+                        ৳ ${Number(order.delivery_charge).toLocaleString()}
+                    </p>
+
+                    <p>
+                        <strong>Total:</strong>
+                        ৳ ${Number(order.total).toLocaleString()}
+                    </p>
+
+                    <p>
+                        <strong>Status:</strong>
+                        <span class="status">${order.status}</span>
+                    </p>
+
+                    <p>
+                        <strong>Created:</strong>
+                        ${order.created_at}
+                    </p>
+
+                </div>
+            `;
+        });
+
+    } catch (error) {
+        console.error(error);
+
+        container.innerHTML = `
+            <p style="color:red;">
+                Failed to load orders.
+            </p>
+        `;
+    }
+}
+
+loadOrders();
+</script>
+
+</body>
+</html>

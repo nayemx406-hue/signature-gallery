@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin - Orders</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header>
+    <h2>MY SHOP ADMIN</h2>
+</header>
+
+<section class="admin">
+    <h1>Order List</h1>
+    <div id="orders"></div>
+</section>
+
+<script>
+const orders =
+    JSON.parse(localStorage.getItem("orders") || "[]");
+
+const container = document.getElementById("orders");
+
+if (orders.length === 0) {
+
+    container.innerHTML =
+        "<p>No orders yet.</p>";
+
+} else {
+
+    orders.forEach(order => {
+
+        container.innerHTML += `
+            <div class="admin-order">
+
+                <h3>${order.id}</h3>
+
+                <p>
+                    <strong>Customer:</strong>
+                    ${order.customer.name}
+                </p>
+
+                <p>
+                    <strong>Phone:</strong>
+                    ${order.customer.phone}
+                </p>
+
+                <p>
+                    <strong>District:</strong>
+                    ${order.customer.district}
+                </p>
+
+                <p>
+                    <strong>Address:</strong>
+                    ${order.customer.address}
+                </p>
+
+                <p>
+                    <strong>Delivery:</strong>
+                    ${order.delivery === "inside"
+                        ? "Inside Sylhet"
+                        : "Outside Sylhet"}
+                </p>
+
+                <p>
+                    <strong>Total:</strong>
+                    ৳ ${order.total.toLocaleString()}
+                </p>
+
+            </div>
+        `;
+    });
+}
+</script>
+
+</body>
+</html>

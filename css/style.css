@@ -5932,3 +5932,63 @@ body {
     padding:0 !important;
 }
 
+
+/* FINAL PAYMENT SECTION FIX */
+
+.payment-options {
+    display:flex !important;
+    flex-direction:column !important;
+    gap:15px !important;
+}
+
+.payment-options .payment-option {
+    display:flex !important;
+    flex-direction:row !important;
+    align-items:center !important;
+    justify-content:flex-start !important;
+    width:100% !important;
+    height:70px !important;
+    padding:0 20px !important;
+    box-sizing:border-box !important;
+    position:relative !important;
+}
+
+.payment-options .payment-option input[type="radio"] {
+    position:relative !important;
+    width:22px !important;
+    height:22px !important;
+    margin:0 15px 0 0 !important;
+    flex-shrink:0 !important;
+}
+
+.payment-options .payment-option span {
+    display:block !important;
+    font-size:20px !important;
+    color:#fff !important;
+}
+
+
+/* BKASH INFORMATION */
+
+#bkashBox {
+    color:#fff !important;
+}
+
+#bkashBox h3 {
+    color:#d4af37 !important;
+}
+
+#bkashBox p {
+    color:#eee !important;
+}
+
+#bkashBox b {
+    color:#ffd700 !important;
+    font-size:22px !important;
+    letter-spacing:1px;
+}
+
+#bkashBox input {
+    color:#fff !important;
+}
+

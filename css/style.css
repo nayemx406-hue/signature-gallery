@@ -5992,3 +5992,38 @@ body {
     color:#fff !important;
 }
 
+
+/* Payment final fix */
+.payment-options .payment-option{
+    position:relative !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:flex-start !important;
+    flex-direction:row !important;
+    width:100% !important;
+    height:70px !important;
+    padding:0 20px !important;
+    margin-bottom:15px !important;
+}
+
+.payment-options .payment-option input{
+    position:static !important;
+    margin:0 15px 0 0 !important;
+    width:22px !important;
+    height:22px !important;
+}
+
+.payment-options .payment-option span{
+    display:block !important;
+    color:white !important;
+}
+
+#bkashBox,#codBox{
+    color:white !important;
+}
+
+#bkashBox b{
+    color:#d4af37 !important;
+    font-size:22px !important;
+}
+

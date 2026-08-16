@@ -144,6 +144,21 @@ async function loadOrders() {
                     </p>
 
                     <p>
+                        <strong>Payment Method:</strong>
+                        ${order.payment_method || "Cash on Delivery"}
+                    </p>
+
+                    <p>
+                        <strong>bKash Number:</strong>
+                        ${order.payment_number || "-"}
+                    </p>
+
+                    <p>
+                        <strong>Transaction ID:</strong>
+                        ${order.transaction_id || "-"}
+                    </p>
+
+                    <p>
                         <strong>Status:</strong>
                         <span class="status">${order.status}</span>
 

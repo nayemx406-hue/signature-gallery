@@ -62,7 +62,36 @@
             text-align: center;
             padding: 40px;
         }
-    </style>
+    
+.menu-bar{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+    padding:20px;
+    background:#0b0b0b;
+    border-bottom:1px solid #d4af37;
+}
+
+.menu-bar button{
+    padding:12px 20px;
+    border-radius:25px;
+    border:1px solid #d4af37;
+    background:linear-gradient(135deg,#111,#222);
+    color:#fff;
+    font-size:15px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.menu-bar button:hover{
+    background:#d4af37;
+    color:#111;
+    transform:translateY(-3px);
+    box-shadow:0 5px 20px rgba(212,175,55,.4);
+}
+
+</style>
 </head>
 
 <body>
@@ -70,6 +99,15 @@
 <header>
     <h1>Shop Admin Dashboard</h1>
 </header>
+
+<nav class="menu-bar">
+    <button onclick="loadOrders()">🏠 Dashboard</button>
+    <button onclick="loadByStatus('Pending')">⏳ Pending</button>
+    <button onclick="loadByStatus('Confirmed')">✅ Confirmed</button>
+    <button onclick="loadByStatus('Shipped')">📦 Shipped</button>
+    <button onclick="loadByStatus('Delivered')">🚚 Delivered</button>
+    <button onclick="loadByStatus('Cancelled')">❌ Cancelled</button>
+</nav>
 
 <section class="admin">
     <h2>Order List</h2>
@@ -205,7 +243,47 @@ async function updateStatus(orderId, status){
         })
     });
 
-    loadOrders();
+    async function loadByStatus(status){
+    const container = document.getElementById("orders");
+
+    try{
+        const response = await fetch(`/api/orders/status/${status}`);
+        const orders = await response.json();
+
+        if(orders.length === 0){
+            container.innerHTML = `<p>No ${status} orders found.</p>`;
+            return;
+        }
+
+        container.innerHTML = "";
+
+        orders.forEach(order => {
+            container.innerHTML += `
+            <div class="admin-order">
+                <h3>Order #${order.order_id}</h3>
+                <p><strong>Customer:</strong> ${order.customer_name}</p>
+                <p><strong>Phone:</strong> ${order.phone}</p>
+                <p><strong>Total:</strong> ৳ ${Number(order.total).toLocaleString()}</p>
+                <p><strong>Status:</strong> ${order.status}</p>
+                <p><strong>Date:</strong> ${formatDate(order.created_at)}</p>
+            </div>`;
+        });
+
+    }catch(e){
+        container.innerHTML = "Failed loading orders";
+    }
+}
+
+function formatDate(date){
+    const d = new Date(date);
+    return d.toLocaleDateString("en-GB") + " | " +
+    d.toLocaleTimeString("en-US", {
+        hour:"2-digit",
+        minute:"2-digit"
+    });
+}
+
+loadOrders();
 }
 
 loadOrders();

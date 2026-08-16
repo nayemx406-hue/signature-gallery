@@ -511,3 +511,13 @@ setInterval(changeHero,4000);
 
 
 
+
+function showPayment(){
+    let payment=document.querySelector('input[name="payment"]:checked').value;
+
+    document.getElementById("bkashBox").style.display =
+    payment==="bkash" ? "block":"none";
+
+    document.getElementById("codBox").style.display =
+    payment==="cod" ? "block":"none";
+}

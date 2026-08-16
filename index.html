@@ -213,7 +213,45 @@
                 required
             ></textarea>
 
-            <div class="order-summary">
+            
+<label>Payment Method</label>
+
+<div class="payment-options">
+
+<label class="payment-option">
+<input type="radio" name="payment" value="bkash" onchange="showPayment()" required>
+<span>bKash Payment</span>
+</label>
+
+<label class="payment-option">
+<input type="radio" name="payment" value="cod" onchange="showPayment()">
+<span>Cash on Delivery</span>
+</label>
+
+</div>
+
+<div id="bkashBox" style="display:none">
+<h3>bKash Payment</h3>
+<p>
+Send Money করুন এই নম্বরে:<br>
+<b>01XXXXXXXXX</b>
+</p>
+<p>Please send money to this bKash personal number.</p>
+
+<label>Payment Number</label>
+<input id="paymentNumber" placeholder="01XXXXXXXXX">
+
+<label>Transaction ID</label>
+<input id="trxId" placeholder="TRX123456">
+</div>
+
+<div id="codBox" style="display:none">
+<h3>Cash on Delivery</h3>
+<p>আপনি পণ্য হাতে পাওয়ার পরে টাকা পরিশোধ করবেন।</p>
+<p>You will pay after receiving the product.</p>
+</div>
+
+<div class="order-summary">
                 <div>
                     <span>Products</span>
                     <strong>৳ <span id="checkoutSubtotal">0</span></strong>

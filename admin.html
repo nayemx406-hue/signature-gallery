@@ -263,10 +263,23 @@ async function updateStatus(orderId, status){
             container.innerHTML += `
             <div class="admin-order">
                 <h3>Order #${order.order_id}</h3>
+
                 <p><strong>Customer:</strong> ${order.customer_name}</p>
                 <p><strong>Phone:</strong> ${order.phone}</p>
+                <p><strong>District:</strong> ${order.district}</p>
+                <p><strong>Address:</strong> ${order.address}</p>
+
+                <p><strong>Payment Method:</strong> ${order.payment_method || "Cash on Delivery"}</p>
+                <p><strong>bKash Number:</strong> ${order.payment_number || "-"}</p>
+                <p><strong>Transaction ID:</strong> ${order.transaction_id || "-"}</p>
+
                 <p><strong>Total:</strong> ৳ ${Number(order.total).toLocaleString()}</p>
-                <p><strong>Status:</strong> ${order.status}</p>
+
+                <p>
+                    <strong>Status:</strong>
+                    <span class="status">${order.status}</span>
+                </p>
+
                 <p><strong>Date:</strong> ${formatDate(order.created_at)}</p>
             </div>`;
         });

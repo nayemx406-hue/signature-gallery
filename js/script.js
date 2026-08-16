@@ -446,7 +446,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 async function saveOrder(order) {
-    const response = await fetch("http://192.168.0.34:5000/api/orders", {
+    const response = await fetch("/api/orders", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

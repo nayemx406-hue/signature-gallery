@@ -5819,3 +5819,40 @@ body {
     box-shadow: 0 5px 20px rgba(212,175,55,0.25);
 }
 
+
+/* FORCE PAYMENT BUTTON FIX */
+
+.payment-options .payment-option {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    width: 100% !important;
+    min-height: 65px !important;
+    padding: 0 20px !important;
+    margin-bottom: 15px !important;
+    border-radius: 15px !important;
+    border: 1px solid #444 !important;
+    background: #1a1a1a !important;
+    gap: 15px !important;
+    box-sizing: border-box !important;
+}
+
+.payment-options .payment-option input {
+    position: static !important;
+    width: 22px !important;
+    height: 22px !important;
+    margin: 0 !important;
+    flex: 0 0 auto !important;
+}
+
+.payment-options .payment-option span {
+    display: block !important;
+    color: white !important;
+    font-size: 18px !important;
+}
+
+.payment-options .payment-option:has(input:checked) {
+    border: 2px solid #d4af37 !important;
+}
+

@@ -146,6 +146,12 @@ async function loadOrders() {
                     <p>
                         <strong>Status:</strong>
                         <span class="status">${order.status}</span>
+
+                        <br><br>
+                        <button onclick="updateStatus('${order.order_id}','Confirmed')">Confirm</button>
+                        <button onclick="updateStatus('${order.order_id}','Shipped')">Ship</button>
+                        <button onclick="updateStatus('${order.order_id}','Delivered')">Deliver</button>
+                        <button onclick="updateStatus('${order.order_id}','Cancelled')">Cancel</button>
                     </p>
 
                     <p>
@@ -166,6 +172,21 @@ async function loadOrders() {
             </p>
         `;
     }
+}
+
+async function updateStatus(orderId, status){
+
+    await fetch(`/api/orders/${orderId}/status`, {
+        method: "PATCH",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify({
+            status: status
+        })
+    });
+
+    loadOrders();
 }
 
 loadOrders();

@@ -152,9 +152,12 @@ def create_order():
                 delivery_type,
                 subtotal,
                 delivery_charge,
-                total
+                total,
+                payment_method,
+                payment_number,
+                transaction_id
             )
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """, (
             data["order_id"],
             data["customer_name"],
@@ -164,7 +167,10 @@ def create_order():
             data["delivery_type"],
             data["subtotal"],
             data["delivery_charge"],
-            data["total"]
+            data["total"],
+            data.get("payment_method"),
+            data.get("payment_number"),
+            data.get("transaction_id")
         ))
 
         conn.commit()

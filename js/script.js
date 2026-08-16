@@ -393,7 +393,10 @@ document
             })),
             subtotal,
             deliveryCharge: delivery,
-            total
+            total,
+            paymentMethod: document.querySelector('input[name="payment"]:checked')?.value || "",
+            paymentNumber: document.getElementById("paymentNumber")?.value || "",
+            transactionId: document.getElementById("trxId")?.value || ""
         };
 
         await saveOrder(order);
@@ -460,7 +463,10 @@ async function saveOrder(order) {
             delivery_type: order.delivery,
             subtotal: order.subtotal,
             delivery_charge: order.deliveryCharge,
-            total: order.total
+            total: order.total,
+            payment_method: order.paymentMethod,
+            payment_number: order.paymentNumber,
+            transaction_id: order.transactionId
         })
     });
 

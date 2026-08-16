@@ -172,6 +172,22 @@ def get_orders():
     return jsonify([dict(row) for row in rows])
 
 
+@app.get("/api/orders/status/<status>")
+def get_orders_by_status(status):
+    conn = get_db()
+
+    rows = conn.execute("""
+        SELECT *
+        FROM orders
+        WHERE status = ?
+        ORDER BY id DESC
+    """, (status,)).fetchall()
+
+    conn.close()
+
+    return jsonify([dict(row) for row in rows])
+
+
 @app.post("/api/orders")
 def create_order():
 

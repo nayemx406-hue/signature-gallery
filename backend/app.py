@@ -85,11 +85,68 @@ def admin_login():
         return "Wrong Password"
 
     return """
-    <form method="POST">
-        <h2>Admin Login</h2>
-        <input name="password" type="password">
-        <button type="submit">Login</button>
-    </form>
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <title>Admin Login</title>
+    <style>
+    body{
+        margin:0;
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background:#080808;
+        font-family:Arial;
+        color:white;
+    }
+    .login-box{
+        width:330px;
+        padding:35px;
+        background:#151515;
+        border-radius:20px;
+        text-align:center;
+        box-shadow:0 0 30px rgba(212,175,55,.25);
+        border:1px solid #d4af37;
+    }
+    h2{
+        color:#d4af37;
+        margin-bottom:10px;
+    }
+    p{
+        color:#aaa;
+    }
+    input{
+        width:90%;
+        padding:14px;
+        margin:20px 0;
+        border-radius:10px;
+        border:1px solid #444;
+        background:#222;
+        color:white;
+    }
+    button{
+        width:100%;
+        padding:14px;
+        border:0;
+        border-radius:10px;
+        background:#d4af37;
+        font-weight:bold;
+        cursor:pointer;
+    }
+    </style>
+    </head>
+    <body>
+    <div class="login-box">
+        <h2>Welcome To Admin Panel</h2>
+        <p>SIGNATURE Gallery</p>
+        <form method="POST">
+            <input name="password" type="password" placeholder="Enter Admin Password">
+            <button>Login</button>
+        </form>
+    </div>
+    </body>
+    </html>
     """
 
 @app.get("/api/health")

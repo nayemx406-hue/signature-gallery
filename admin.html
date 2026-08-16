@@ -51,11 +51,38 @@
 
         .status {
             display: inline-block;
-            padding: 6px 12px;
+            padding: 7px 14px;
             border-radius: 20px;
-            background: #e8f7ed;
-            color: #16803c;
             font-weight: bold;
+            font-size: 14px;
+            background: #222;
+            color: #fff;
+            border: 1px solid #d4af37;
+        }
+
+        .status-delivered {
+            background: #0f5132;
+            color: #75ffb0;
+        }
+
+        .status-cancelled {
+            background: #5a1111;
+            color: #ff8a8a;
+        }
+
+        .status-confirmed {
+            background: #102a56;
+            color: #8fc7ff;
+        }
+
+        .status-shipped {
+            background: #3b245c;
+            color: #d7a8ff;
+        }
+
+        .status-pending {
+            background: #5c4800;
+            color: #ffe477;
         }
 
         .loading {
@@ -203,7 +230,7 @@ async function loadOrders() {
 
                     <p>
                         <strong>Status:</strong>
-                        <span class="status">${order.status}</span>
+                        <span class="status status-${order.status.toLowerCase()}">${order.status}</span>
 
                         <br><br>
                         <button onclick="updateStatus('${order.order_id}','Confirmed')">Confirm</button>
@@ -277,7 +304,7 @@ async function updateStatus(orderId, status){
 
                 <p>
                     <strong>Status:</strong>
-                    <span class="status">${order.status}</span>
+                    <span class="status status-${order.status.toLowerCase()}">${order.status}</span>
                 </p>
 
                 <p><strong>Date:</strong> ${formatDate(order.created_at)}</p>

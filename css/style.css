@@ -5706,3 +5706,69 @@ body {
     background-position:center !important;
 }
 
+
+
+/* Luxury Payment Section */
+
+.payment-options {
+    display: grid;
+    gap: 14px;
+    margin: 15px 0;
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px;
+    border: 1px solid #d4af37;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #111, #1c1c1c);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.payment-option:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(212,175,55,0.25);
+}
+
+.payment-option input {
+    accent-color: #d4af37;
+    width: 18px;
+    height: 18px;
+}
+
+#bkashBox,
+#codBox {
+    margin-top: 15px;
+    padding: 20px;
+    border-radius: 18px;
+    background: #0f0f0f;
+    border: 1px solid #d4af37;
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+#bkashBox h3,
+#codBox h3 {
+    color: #d4af37;
+    margin-bottom: 10px;
+}
+
+#bkashBox b {
+    color: #ffd700;
+    font-size: 20px;
+}
+
+#bkashBox input {
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #555;
+    background: #222;
+    color: white;
+}
+

@@ -118,6 +118,54 @@
     box-shadow:0 5px 20px rgba(212,175,55,.4);
 }
 
+
+.summary-cards{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    padding:25px;
+}
+
+.card{
+    min-width:150px;
+    padding:20px;
+    text-align:center;
+    border-radius:18px;
+    background:linear-gradient(145deg,#111,#222);
+    border:1px solid #d4af37;
+    color:white;
+    font-weight:bold;
+    box-shadow:0 8px 25px rgba(0,0,0,.4);
+}
+
+.card span{
+    display:block;
+    font-size:28px;
+    margin-top:10px;
+    color:#d4af37;
+}
+
+.card.pending span{
+    color:#ffe477;
+}
+
+.card.confirmed span{
+    color:#8fc7ff;
+}
+
+.card.shipped span{
+    color:#d7a8ff;
+}
+
+.card.delivered span{
+    color:#75ffb0;
+}
+
+.card.cancelled span{
+    color:#ff8a8a;
+}
+
 </style>
 </head>
 
@@ -136,6 +184,15 @@
     <button onclick="loadByStatus('Cancelled')">❌ Cancelled</button>
 </nav>
 
+<div class="summary-cards">
+    <div class="card">📦 Total <span id="totalCount">0</span></div>
+    <div class="card pending">⏳ Pending <span id="pendingCount">0</span></div>
+    <div class="card confirmed">✅ Confirmed <span id="confirmedCount">0</span></div>
+    <div class="card shipped">📦 Shipped <span id="shippedCount">0</span></div>
+    <div class="card delivered">🚚 Delivered <span id="deliveredCount">0</span></div>
+    <div class="card cancelled">❌ Cancelled <span id="cancelledCount">0</span></div>
+</div>
+
 <section class="admin">
     <h2>Order List</h2>
 
@@ -145,6 +202,34 @@
 </section>
 
 <script>
+
+async function loadSummary(){
+    try{
+        const response = await fetch("/api/orders");
+        const orders = await response.json();
+
+        document.getElementById("totalCount").innerText = orders.length;
+
+        document.getElementById("pendingCount").innerText =
+            orders.filter(o => o.status === "Pending").length;
+
+        document.getElementById("confirmedCount").innerText =
+            orders.filter(o => o.status === "Confirmed").length;
+
+        document.getElementById("shippedCount").innerText =
+            orders.filter(o => o.status === "Shipped").length;
+
+        document.getElementById("deliveredCount").innerText =
+            orders.filter(o => o.status === "Delivered").length;
+
+        document.getElementById("cancelledCount").innerText =
+            orders.filter(o => o.status === "Cancelled").length;
+
+    }catch(e){
+        console.log("Summary loading failed");
+    }
+}
+
 async function loadOrders() {
     const container = document.getElementById("orders");
 
@@ -327,9 +412,7 @@ function formatDate(date){
     });
 }
 
-loadOrders();
-}
-
+loadSummary();
 loadOrders();
 </script>
 

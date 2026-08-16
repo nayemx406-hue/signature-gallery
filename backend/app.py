@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, send_from_directory, session, redirect
 from flask_cors import CORS
 import sqlite3
 from pathlib import Path
@@ -8,6 +8,9 @@ DB_PATH = BASE_DIR / "database" / "shop.db"
 
 app = Flask(__name__)
 CORS(app)
+
+app.secret_key = "my-secret-key-123"
+ADMIN_PASSWORD = "তোমার_দেওয়া_password"
 
 
 def get_db():
@@ -62,8 +65,32 @@ def image_files(filename):
 
 @app.get("/admin.html")
 def admin_page():
+    if not session.get("admin"):
+        return redirect("/admin-login")
+
     return send_from_directory(BASE_DIR, "admin.html")
 
+
+
+@app.route("/admin-login", methods=["GET","POST"])
+def admin_login():
+
+    if request.method == "POST":
+        password = request.form.get("password")
+
+        if password == ADMIN_PASSWORD:
+            session["admin"] = True
+            return redirect("/admin.html")
+
+        return "Wrong Password"
+
+    return """
+    <form method="POST">
+        <h2>Admin Login</h2>
+        <input name="password" type="password">
+        <button type="submit">Login</button>
+    </form>
+    """
 
 @app.get("/api/health")
 def health():

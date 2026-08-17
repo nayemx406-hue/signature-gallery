@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signature Product 01 | My Shop</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/product-details.css">
+</head>
+<body>
+<header class="site-header">
+<div class="header-main">
+<a href="index.html" class="brand-name">MY <span>SHOP</span></a>
+<div class="header-actions">
+<a href="index.html#shop">BACK TO SHOP</a>
+<button class="cart-button" onclick="goToShopCart()">CART <b id="cartCount">0</b></button>
+</div>
+</div>
+</header>
+
+<main class="product-page">
+<section class="product-details">
+
+<div class="product-gallery">
+<div class="product-main-image">
+<img id="mainProductImage" src="images/products/product-01-1.png" alt="Signature Product 01">
+</div>
+
+<div class="product-thumbnails">
+<button onclick="changeProductImage("images/products/product-01-1.png")"><img src="images/products/product-01-1.png" alt=""></button>
+<button onclick="changeProductImage("images/products/product-01-2.png")"><img src="images/products/product-01-2.png" alt=""></button>
+<button onclick="changeProductImage("images/products/product-01-3.png")"><img src="images/products/product-01-3.png" alt=""></button>
+<button onclick="changeProductImage("images/products/product-01-4.png")"><img src="images/products/product-01-4.png" alt=""></button>
+</div>
+</div>
+
+<div class="product-information">
+<span class="product-label">SPECIAL COLLECTION</span>
+<h1>Signature Product 01</h1>
+<div class="product-rating">★★★★★ <span>Premium Collection</span></div>
+<div class="product-price">৳ 999</div>
+
+<p class="product-description">Premium US Polo Collection designed for everyday comfort, clean style and a smart modern look.</p>
+
+<div class="product-option">
+<strong>Colour</strong>
+<div class="option-buttons">
+<button class="colour-option active" onclick="selectColour(this,"White")">White</button>
+<button class="colour-option" onclick="selectColour(this,"Black")">Black</button>
+</div>
+</div>
+
+<div class="product-option">
+<strong>Size</strong>
+<div class="option-buttons">
+<button class="size-option" onclick="selectSize(this,"M")">M</button>
+<button class="size-option" onclick="selectSize(this,"L")">L</button>
+<button class="size-option" onclick="selectSize(this,"XL")">XL</button>
+</div>
+</div>
+
+<div class="product-option">
+<strong>Quantity</strong>
+<div class="quantity-selector">
+<button onclick="changeProductQuantity(-1)">−</button>
+<span id="productQuantity">1</span>
+<button onclick="changeProductQuantity(1)">+</button>
+</div>
+</div>
+
+<div class="product-actions">
+<button class="product-add-cart" onclick="addProductToCart()">ADD TO CART</button>
+<button class="product-order-now" onclick="orderNow()">ORDER NOW</button>
+</div>
+
+<div class="product-info-box">
+<div><strong>Delivery</strong><span>Inside & Outside Sylhet</span></div>
+<div><strong>Available Sizes</strong><span>M / L / XL</span></div>
+<div><strong>Colours</strong><span>White / Black</span></div>
+</div>
+</div>
+
+</section>
+</main>
+
+<script src="js/config.js"></script>
+<script src="js/product-details.js"></script>
+</body>
+</html>

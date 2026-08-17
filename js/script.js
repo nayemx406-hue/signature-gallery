@@ -3,9 +3,9 @@ console.log("SG SCRIPT LOADED");
 const specialProducts = [
     {
         name: "Signature Product 01",
-        description: "Product details coming soon",
-        price: 1800,
-        image: ""
+        description: "Premium US Polo Collection",
+        price: 999,
+        image: "images/products/product-01-1.png"
     },
     {
         name: "Signature Product 02",
@@ -43,7 +43,7 @@ function productCard(product, index, type) {
     const badge = type === "special" ? "SPECIAL" : "NEW";
 
     return `
-        <article class="sg-product-card">
+        <article class="sg-product-card" onclick="openProductDetails()">
 
             <div class="sg-product-media">
                 <span class="sg-product-badge">${badge}</span>
@@ -105,6 +105,10 @@ function showProducts() {
             .map((product, index) => productCard(product, index, "regular"))
             .join("");
     }
+}
+
+function openProductDetails() {
+    window.location.href = "product-details.html";
 }
 
 function addToCart(index, type = "regular") {
@@ -428,6 +432,47 @@ document
         }
     });
 
+
+function importSelectedProduct() {
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.get("productAdded") !== "1") return;
+
+    const raw = localStorage.getItem("selectedProduct");
+    if (!raw) return;
+
+    try {
+        const product = JSON.parse(raw);
+
+        const existing = cart.find(item =>
+            item.name === product.name &&
+            item.colour === product.colour &&
+            item.size === product.size
+        );
+
+        if (existing) {
+            existing.quantity += product.quantity;
+        } else {
+            cart.push(product);
+        }
+
+        localStorage.removeItem("selectedProduct");
+
+        updateCart();
+
+        window.history.replaceState(
+            {},
+            document.title,
+            window.location.pathname
+        );
+
+        openCart();
+
+    } catch (error) {
+        console.error("PRODUCT IMPORT ERROR:", error);
+    }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     console.log("SG DOM READY");
     console.log("specialProducts:", specialProducts.length);
@@ -436,6 +481,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("productList element:", document.getElementById("productList"));
     try {
         showProducts();
+        importSelectedProduct();
         console.log("SIGNATURE GALLERY: Products rendered successfully.");
     } catch (error) {
         console.error("SIGNATURE GALLERY PRODUCT ERROR:", error);

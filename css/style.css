@@ -6027,3 +6027,28 @@ body {
     font-size:22px !important;
 }
 
+
+/* Product 01 image presentation */
+.sg-product-media .sg-product-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: #f3f1ec;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sg-product-media .sg-product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform .5s ease;
+}
+
+.sg-product-card:hover .sg-product-image img {
+    transform: scale(1.04);
+}
+

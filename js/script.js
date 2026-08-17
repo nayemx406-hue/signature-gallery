@@ -43,7 +43,7 @@ function productCard(product, index, type) {
     const badge = type === "special" ? "SPECIAL" : "NEW";
 
     return `
-        <article class="sg-product-card" onclick="openProductDetails()">
+        <article class="sg-product-card" onclick="openProductDetails(${index}, '${type}')">
 
             <div class="sg-product-media">
                 <span class="sg-product-badge">${badge}</span>
@@ -107,7 +107,15 @@ function showProducts() {
     }
 }
 
-function openProductDetails() {
+function openProductDetails(index, type = "regular") {
+    localStorage.setItem(
+        "selectedProduct",
+        JSON.stringify({
+            index,
+            type
+        })
+    );
+
     window.location.href = "product-details.html";
 }
 

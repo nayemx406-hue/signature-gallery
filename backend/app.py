@@ -63,6 +63,11 @@ def image_files(filename):
     return send_from_directory(BASE_DIR / "images", filename)
 
 
+@app.get("/product-details.html")
+def product_details_page():
+    return send_from_directory(BASE_DIR, "product-details.html")
+
+
 @app.get("/admin.html")
 def admin_page():
     if not session.get("admin"):

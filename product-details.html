@@ -3,87 +3,345 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Signature Product 01 | My Shop</title>
+
+<title>U.S. Polo Style Premium Baggy Joggers | Signature Gallery</title>
+
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/product-details.css">
 </head>
+
 <body>
+
 <header class="site-header">
-<div class="header-main">
-<a href="index.html" class="brand-name">MY <span>SHOP</span></a>
-<div class="header-actions">
-<a href="index.html#shop">BACK TO SHOP</a>
-<button class="cart-button" onclick="goToShopCart()">CART <b id="cartCount">0</b></button>
-</div>
-</div>
+    <div class="header-main">
+        <a href="index.html" class="brand-name">MY <span>SHOP</span></a>
+
+        <div class="header-actions">
+            <a href="index.html#shop">BACK TO SHOP</a>
+
+            <button class="cart-button" onclick="goToShopCart()">
+                🛒 CART <b id="cartCount">0</b>
+            </button>
+        </div>
+    </div>
 </header>
 
+
 <main class="product-page">
+
 <section class="product-details">
 
-<div class="product-gallery">
-<div class="product-main-image">
-<img id="mainProductImage" src="images/products/product-01-1.png" alt="Signature Product 01">
-</div>
+    <!-- PRODUCT GALLERY -->
+    <div class="product-gallery">
 
-<div class="product-thumbnails">
-<button onclick="changeProductImage("images/products/product-01-1.png")"><img src="images/products/product-01-1.png" alt=""></button>
-<button onclick="changeProductImage("images/products/product-01-2.png")"><img src="images/products/product-01-2.png" alt=""></button>
-<button onclick="changeProductImage("images/products/product-01-3.png")"><img src="images/products/product-01-3.png" alt=""></button>
-<button onclick="changeProductImage("images/products/product-01-4.png")"><img src="images/products/product-01-4.png" alt=""></button>
-</div>
-</div>
+        <div class="product-main-image" id="productImageBox">
+            <img
+                id="mainProductImage"
+                src="images/products/product-01-1.png"
+                alt="U.S. Polo Style Premium Baggy Joggers"
+            >
+            <span class="image-zoom-hint">CLICK TO VIEW</span>
+        </div>
 
-<div class="product-information">
-<span class="product-label">SPECIAL COLLECTION</span>
-<h1>Signature Product 01</h1>
-<div class="product-rating">★★★★★ <span>Premium Collection</span></div>
-<div class="product-price">৳ 999</div>
+        <div class="product-thumbnails">
 
-<p class="product-description">Premium US Polo Collection designed for everyday comfort, clean style and a smart modern look.</p>
+            <button
+                type="button"
+                class="thumbnail active"
+                onclick="changeProductImage('images/products/product-01-1.png', this)"
+            >
+                <img src="images/products/product-01-1.png" alt="Product image 1">
+            </button>
 
-<div class="product-option">
-<strong>Colour</strong>
-<div class="option-buttons">
-<button class="colour-option active" onclick="selectColour(this,"White")">White</button>
-<button class="colour-option" onclick="selectColour(this,"Black")">Black</button>
-</div>
-</div>
+            <button
+                type="button"
+                class="thumbnail"
+                onclick="changeProductImage('images/products/product-01-2.png', this)"
+            >
+                <img src="images/products/product-01-2.png" alt="Product image 2">
+            </button>
 
-<div class="product-option">
-<strong>Size</strong>
-<div class="option-buttons">
-<button class="size-option" onclick="selectSize(this,"M")">M</button>
-<button class="size-option" onclick="selectSize(this,"L")">L</button>
-<button class="size-option" onclick="selectSize(this,"XL")">XL</button>
-</div>
-</div>
+            <button
+                type="button"
+                class="thumbnail"
+                onclick="changeProductImage('images/products/product-01-3.png', this)"
+            >
+                <img src="images/products/product-01-3.png" alt="Product image 3">
+            </button>
 
-<div class="product-option">
-<strong>Quantity</strong>
-<div class="quantity-selector">
-<button onclick="changeProductQuantity(-1)">−</button>
-<span id="productQuantity">1</span>
-<button onclick="changeProductQuantity(1)">+</button>
-</div>
-</div>
+            <button
+                type="button"
+                class="thumbnail"
+                onclick="changeProductImage('images/products/product-01-4.png', this)"
+            >
+                <img src="images/products/product-01-4.png" alt="Product image 4">
+            </button>
 
-<div class="product-actions">
-<button class="product-add-cart" onclick="addProductToCart()">ADD TO CART</button>
-<button class="product-order-now" onclick="orderNow()">ORDER NOW</button>
-</div>
+        </div>
 
-<div class="product-info-box">
-<div><strong>Delivery</strong><span>Inside & Outside Sylhet</span></div>
-<div><strong>Available Sizes</strong><span>M / L / XL</span></div>
-<div><strong>Colours</strong><span>White / Black</span></div>
-</div>
-</div>
+    </div>
+
+
+    <!-- PRODUCT INFORMATION -->
+    <div class="product-information">
+
+        <span class="product-label">SPECIAL COLLECTION</span>
+
+        <h1>U.S. Polo Style Premium Baggy Joggers</h1>
+
+        <div class="rating-row">
+            <div class="product-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-number">4.9</span>
+            </div>
+
+            <span class="rating-divider">|</span>
+
+            <span class="review-text">Premium Collection</span>
+        </div>
+
+        <div class="price-area">
+            <span class="product-price-label">PRICE</span>
+            <div class="product-price">
+                ৳ <span id="productPrice">999</span>
+            </div>
+        </div>
+
+
+        <!-- SHORT DESCRIPTION -->
+        <p class="product-short-description">
+            স্টাইলিশ লুক, আরামদায়ক ফিট ও প্রিমিয়াম ফিনিশিং—
+            সব একসাথে। ✨
+        </p>
+
+
+        <!-- COLOUR -->
+        <div class="product-option">
+
+            <strong>Colour</strong>
+
+            <div class="colour-options">
+
+                <button
+                    type="button"
+                    class="colour-option active"
+                    data-colour="Black"
+                    onclick="selectColour(this, 'Black')"
+                >
+                    <span class="colour-dot black"></span>
+                    Black
+                </button>
+
+                <button
+                    type="button"
+                    class="colour-option"
+                    data-colour="White"
+                    onclick="selectColour(this, 'White')"
+                >
+                    <span class="colour-dot white"></span>
+                    White
+                </button>
+
+            </div>
+
+            <p class="selected-option">
+                Selected: <b id="selectedColour">Black</b>
+            </p>
+
+        </div>
+
+
+        <!-- SIZE -->
+        <div class="product-option">
+
+            <div class="option-heading">
+                <strong>Size</strong>
+                <span>M / L / XL</span>
+            </div>
+
+            <div class="option-buttons">
+
+                <button
+                    type="button"
+                    class="size-option active"
+                    onclick="selectSize(this, 'M')"
+                >
+                    M
+                </button>
+
+                <button
+                    type="button"
+                    class="size-option"
+                    onclick="selectSize(this, 'L')"
+                >
+                    L
+                </button>
+
+                <button
+                    type="button"
+                    class="size-option"
+                    onclick="selectSize(this, 'XL')"
+                >
+                    XL
+                </button>
+
+            </div>
+
+            <p class="selected-option">
+                Selected: <b id="selectedSize">M</b>
+            </p>
+
+        </div>
+
+
+        <!-- QUANTITY -->
+        <div class="product-option">
+
+            <strong>Quantity</strong>
+
+            <div class="quantity-row">
+
+                <div class="quantity-selector">
+
+                    <button
+                        type="button"
+                        onclick="changeProductQuantity(-1)"
+                        aria-label="Decrease quantity"
+                    >
+                        −
+                    </button>
+
+                    <span id="productQuantity">1</span>
+
+                    <button
+                        type="button"
+                        onclick="changeProductQuantity(1)"
+                        aria-label="Increase quantity"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+                <div class="quantity-total">
+                    Total:
+                    <strong>৳ <span id="productTotal">999</span></strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ACTIONS -->
+        <div class="product-actions">
+
+            <button
+                type="button"
+                class="product-add-cart"
+                onclick="addProductToCart()"
+            >
+                🛒 ADD TO CART
+            </button>
+
+            <button
+                type="button"
+                class="product-order-now"
+                onclick="orderNow()"
+            >
+                ⚡ BUY NOW
+            </button>
+
+        </div>
+
+
+        <!-- DELIVERY / PRODUCT INFO -->
+        <div class="product-info-box">
+
+            <div>
+                <strong>🚚 Delivery</strong>
+                <span>Inside & Outside Sylhet</span>
+            </div>
+
+            <div>
+                <strong>📏 Available Sizes</strong>
+                <span>M / L / XL</span>
+            </div>
+
+            <div>
+                <strong>🎨 Available Colours</strong>
+                <span>Black / White</span>
+            </div>
+
+            <div>
+                <strong>🛍️ Order</strong>
+                <span>Website Direct Order</span>
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
+
+
+<!-- FULL DESCRIPTION -->
+<section class="product-description-section">
+
+    <div class="description-heading">
+        <span>PRODUCT INFORMATION</span>
+        <h2>Product Description</h2>
+    </div>
+
+    <div class="description-content">
+
+        <h3>🤍 U.S. Polo Style Premium Baggy Joggers 🤍</h3>
+
+        <p>
+            স্টাইলিশ লুক, আরামদায়ক ফিট ও প্রিমিয়াম ফিনিশিং—সব একসাথে। ✨
+        </p>
+
+        <ul>
+            <li>👖 ট্রেন্ডি Baggy Fit</li>
+            <li>🧵 নরম ও আরামদায়ক ফ্যাব্রিক</li>
+            <li>🎯 ইলাস্টিক কোমর ও ড্র-স্ট্রিং</li>
+            <li>👜 দুই পাশে পকেট</li>
+            <li>🐎 প্রিমিয়াম পোলো-স্টাইল এমব্রয়ডারি</li>
+            <li>✨ সুন্দর ফিনিশিং</li>
+        </ul>
+
+        <p class="description-cta">
+            🛍️ <strong>ওয়েবসাইটে সরাসরি অর্ডার করুন।</strong><br>
+            🔥 আরও অনেক নতুন প্রোডাক্ট দেখতে আমাদের ওয়েবসাইট ভিজিট করুন।<br>
+            🚚 <strong>সারা দেশে Home Delivery available.</strong>
+        </p>
+
+    </div>
+
+</section>
+
 </main>
+
+
+<!-- IMAGE LIGHTBOX -->
+<div class="image-lightbox" id="imageLightbox">
+
+    <button
+        type="button"
+        class="lightbox-close"
+        onclick="closeImagePreview()"
+        aria-label="Close"
+    >
+        ✕
+    </button>
+
+    <img id="lightboxImage" src="" alt="Product preview">
+
+</div>
+
 
 <script src="js/config.js"></script>
 <script src="js/product-details.js"></script>
+
 </body>
 </html>

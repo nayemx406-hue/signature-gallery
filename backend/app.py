@@ -40,11 +40,13 @@ def init_db():
     """)
 
     conn.commit()
-    conn.close()
-
-
 @app.get("/")
 def home_page():
+    return send_from_directory(BASE_DIR, "index.html")
+
+
+@app.get("/index.html")
+def index_html_page():
     return send_from_directory(BASE_DIR, "index.html")
 
 

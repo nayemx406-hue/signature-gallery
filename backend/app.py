@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, send_from_directory, session, redirect
 from flask_cors import CORS
 import sqlite3
+import json
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -235,9 +236,10 @@ def create_order():
                 total,
                 payment_method,
                 payment_number,
-                transaction_id
+                transaction_id,
+                items
             )
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """, (
             data["order_id"],
             data["customer_name"],
@@ -250,7 +252,8 @@ def create_order():
             data["total"],
             data.get("payment_method"),
             data.get("payment_number"),
-            data.get("transaction_id")
+            data.get("transaction_id"),
+            json.dumps(data.get("items", []))
         ))
 
         conn.commit()

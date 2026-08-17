@@ -12,18 +12,23 @@
 
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: radial-gradient(circle at top, #222, #050505);
-            color: #fff;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #eef8ff;
+            color: #1e293b;
         }
 
         header {
-            background: linear-gradient(135deg,#111,#1c1c1c);
-            color: #d4af37;
+            position:relative;
+            display:flex;
+            align-items:center;
+            justify-content:flex-start;
+            padding-right:80px;
+            background: linear-gradient(135deg,#38bdf8,#0ea5e9);
+            color: #ffffff;
             padding: 25px;
             text-align: center;
-            border-bottom: 1px solid #d4af37;
-            box-shadow: 0 5px 25px rgba(212,175,55,.2);
+            border-bottom: 1px solid #bae6fd;
+            box-shadow: 0 8px 25px rgba(14,165,233,.25);
         }
 
         header h1 {
@@ -37,12 +42,13 @@
         }
 
         .admin-order {
-            background: linear-gradient(145deg,#111,#1b1b1b);
+            color:#111827;
+            background: #f8fafc;
             border-radius: 18px;
-            padding: 22px;
-            margin-bottom: 20px;
-            border: 1px solid #d4af37;
-            box-shadow: 0 10px 30px rgba(0,0,0,.5);
+            padding: 15px;
+            margin-bottom: 12px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 8px 20px rgba(14,165,233,.12);
         }
 
         .admin-order h3 {
@@ -57,7 +63,7 @@
             font-size: 14px;
             background: #222;
             color: #fff;
-            border: 1px solid #d4af37;
+            border: 1px solid #e2e8f0;
         }
 
         .status-delivered {
@@ -102,48 +108,58 @@
 
 .menu-bar button{
     padding:12px 20px;
-    border-radius:25px;
-    border:1px solid #d4af37;
-    background:linear-gradient(135deg,#111,#222);
-    color:#fff;
+    border-radius:14px;
+    border:none;
+    background:#0ea5e9;
+    color:white;
     font-size:15px;
     cursor:pointer;
     transition:.3s;
+    box-shadow:0 5px 15px rgba(14,165,233,.25);
 }
 
 .menu-bar button:hover{
-    background:#d4af37;
-    color:#111;
+    background:#0284c7;
+    color:white;
     transform:translateY(-3px);
-    box-shadow:0 5px 20px rgba(212,175,55,.4);
+    box-shadow:0 8px 20px rgba(14,165,233,.35);
 }
 
 
 .summary-cards{
-    display:flex;
-    justify-content:center;
-    gap:15px;
-    flex-wrap:wrap;
-    padding:25px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    padding:10px;
 }
 
 .card{
-    min-width:150px;
-    padding:20px;
+    min-width:120px;
+    padding:12px 15px;
     text-align:center;
+    border-radius:14px;
+    color:#1e293b;
+    background:#ffffff;
+    border:1px solid #e0f2fe;
+    color:#1e293b;
+    font-weight:700;
     border-radius:18px;
-    background:linear-gradient(145deg,#111,#222);
-    border:1px solid #d4af37;
-    color:white;
-    font-weight:bold;
-    box-shadow:0 8px 25px rgba(0,0,0,.4);
+    padding:12px 15px;
+    min-height:80px;
+    box-shadow:0 6px 18px rgba(14,165,233,.12);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 35px rgba(14,165,233,.2);
 }
 
 .card span{
     display:block;
-    font-size:28px;
-    margin-top:10px;
-    color:#d4af37;
+    font-size:22px;
+    margin-top:5px;
+    color:#0284c7;
 }
 
 .card.pending span{
@@ -166,16 +182,62 @@
     color:#ff8a8a;
 }
 
+
+.menu-toggle{
+    position:absolute;
+    right:15px;
+    top:15px;
+    background:linear-gradient(145deg,#ffffff,#dbeafe);
+    border:none;
+    border-radius:14px;
+    font-size:30px;
+    line-height:1;
+    width:48px;
+    height:48px;
+    cursor:pointer;
+    color:#0284c7;
+    font-weight:bold;
+    box-shadow:0 10px 20px rgba(14,165,233,.35),
+               inset 0 2px 5px rgba(255,255,255,.8);
+    transform:translateZ(0);
+    transition:.3s;
+}
+
+.menu-toggle:hover{
+    transform:scale(1.08);
+    box-shadow:0 12px 25px rgba(14,165,233,.45);
+}
+
+.menu-bar{
+    display:none;
+    position:absolute;
+    right:20px;
+    top:65px;
+    background:#ffffff;
+    padding:15px;
+    border-radius:16px;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+    z-index:10;
+}
+
+.menu-bar.active{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-    <h1>Shop Admin Dashboard</h1>
+    <h1>𝐀𝐝𝐦𝐢𝐧</h1>
+
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 </header>
 
-<nav class="menu-bar">
+<nav class="menu-bar" id="adminMenu">
     <button onclick="loadOrders()">🏠 Dashboard</button>
     <button onclick="loadByStatus('Pending')">⏳ Pending</button>
     <button onclick="loadByStatus('Confirmed')">✅ Confirmed</button>
@@ -356,6 +418,10 @@ async function updateStatus(orderId, status){
         })
     });
 
+    await loadSummary();
+    await loadOrders();
+}
+
     async function loadByStatus(status){
     const container = document.getElementById("orders");
 
@@ -384,6 +450,14 @@ async function updateStatus(orderId, status){
                 <p><strong>Payment Method:</strong> ${order.payment_method || "Cash on Delivery"}</p>
                 <p><strong>bKash Number:</strong> ${order.payment_number || "-"}</p>
                 <p><strong>Transaction ID:</strong> ${order.transaction_id || "-"}</p>
+
+                <p><strong>🛒 Product:</strong><br>
+                ${
+                    order.items ? JSON.parse(order.items).map(item =>
+                    `${item.name} | 🎨 ${item.colour || "-"} | 📏 ${item.size || "-"}`
+                    ).join("<br>") : "-"
+                }
+                </p>
 
                 <p><strong>Total:</strong> ৳ ${Number(order.total).toLocaleString()}</p>
 
@@ -414,6 +488,11 @@ function formatDate(date){
 
 loadSummary();
 loadOrders();
+function toggleMenu(){
+    document.getElementById("adminMenu")
+    .classList.toggle("active");
+}
+
 </script>
 
 </body>

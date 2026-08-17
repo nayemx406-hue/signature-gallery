@@ -393,7 +393,9 @@ document
             items: cart.map(item => ({
                 name: item.name,
                 price: item.price,
-                quantity: item.quantity
+                quantity: item.quantity,
+                colour: item.colour || "",
+                size: item.size || ""
             })),
             subtotal,
             deliveryCharge: delivery,
@@ -512,7 +514,8 @@ async function saveOrder(order) {
             total: order.total,
             payment_method: order.paymentMethod,
             payment_number: order.paymentNumber,
-            transaction_id: order.transactionId
+            transaction_id: order.transactionId,
+            items: order.items
         })
     });
 

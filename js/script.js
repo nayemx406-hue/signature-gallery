@@ -9,9 +9,9 @@ const specialProducts = [
     },
     {
         name: "Signature Product 02",
-        description: "Product details coming soon",
-        price: 2200,
-        image: ""
+        description: "Premium T Shirt Collection",
+        price: 799,
+        image: "images/products/product-02/product-02-main.png"
     },
     {
         name: "Signature Product 03",
@@ -116,7 +116,7 @@ function openProductDetails(index, type = "regular") {
         })
     );
 
-    window.location.href = "product-details.html";
+    window.location.href = type === "special" && index === 1 ? "product-details.html?product=2" : "product-details.html";
 }
 
 function addToCart(index, type = "regular") {
@@ -291,6 +291,7 @@ function showConfirmation(
     name,
     phone,
     district,
+                upazila,
     address,
     delivery,
     total
@@ -362,8 +363,9 @@ document
         const phone =
             document.getElementById("customerPhone").value.trim();
 
-        const district =
-            document.getElementById("district").value;
+        const district = document.getElementById("district").value;
+
+        const upazila = document.getElementById("upazila").value;
 
         const address =
             document.getElementById("address").value.trim();
@@ -395,6 +397,7 @@ document
                 name,
                 phone,
                 district,
+                upazila,
                 address
             },
             delivery: deliveryType,
@@ -421,6 +424,7 @@ document
             name,
             phone,
             district,
+                upazila,
             address,
             deliveryType,
             total
@@ -515,6 +519,7 @@ async function saveOrder(order) {
             customer_name: order.customer.name,
             phone: order.customer.phone,
             district: order.customer.district,
+                upazila,
             address: order.customer.address,
             delivery_type: order.delivery,
             subtotal: order.subtotal,
@@ -584,3 +589,61 @@ function showPayment(){
     document.getElementById("codBox").style.display =
     payment==="cod" ? "block":"none";
 }
+
+
+const locationData = {
+    "Sylhet": {
+        "Sylhet": ["Sylhet Sadar","Beanibazar","Golapganj","Jaintapur","Kanaighat"],
+        "Sunamganj": ["Sunamganj Sadar","Jagannathpur","Chhatak"],
+        "Habiganj": ["Habiganj Sadar","Madhabpur","Chunarughat"],
+        "Moulvibazar": ["Moulvibazar Sadar","Kulaura","Sreemangal"]
+    },
+    "Dhaka": {
+        "Dhaka": ["Dhamrai","Dohar","Keraniganj","Nawabganj","Savar"],
+        "Gazipur": ["Gazipur Sadar","Kaliakair","Kapasia"],
+        "Narayanganj": ["Narayanganj Sadar","Araihazar","Rupganj"]
+    },
+    "Chattogram": {
+        "Chattogram": ["Anwara","Boalkhali","Fatikchhari","Rangunia"],
+        "Cox's Bazar": ["Cox's Bazar Sadar","Chakaria","Ramu"]
+    }
+};
+
+document.addEventListener("DOMContentLoaded", function(){
+
+document.getElementById("division").addEventListener("change", function(){
+    const district = document.getElementById("district");
+    const upazila = document.getElementById("upazila");
+
+    district.innerHTML = '<option value="">Select District</option>';
+    upazila.innerHTML = '<option value="">Select Upazila</option>';
+
+    let districts = locationData[this.value];
+
+    if(districts){
+        Object.keys(districts).forEach(function(name){
+            let option = document.createElement("option");
+            option.value = name;
+            option.textContent = name;
+            district.appendChild(option);
+        });
+    }
+});
+
+document.getElementById("district").addEventListener("change", function(){
+    const upazila = document.getElementById("upazila");
+    const division = document.getElementById("division").value;
+
+    upazila.innerHTML = '<option value="">Select Upazila</option>';
+
+    if(locationData[division] && locationData[division][this.value]){
+        locationData[division][this.value].forEach(function(name){
+            let option = document.createElement("option");
+            option.value = name;
+            option.textContent = name;
+            upazila.appendChild(option);
+        });
+    }
+});
+
+});

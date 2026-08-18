@@ -48,41 +48,7 @@
             <span class="image-zoom-hint">CLICK TO VIEW</span>
         </div>
 
-        <div class="product-thumbnails">
-
-            <button
-                type="button"
-                class="thumbnail active"
-                onclick="changeProductImage('images/products/product-01-1.png', this)"
-            >
-                <img src="images/products/product-01-1.png" alt="Product image 1">
-            </button>
-
-            <button
-                type="button"
-                class="thumbnail"
-                onclick="changeProductImage('images/products/product-01-2.png', this)"
-            >
-                <img src="images/products/product-01-2.png" alt="Product image 2">
-            </button>
-
-            <button
-                type="button"
-                class="thumbnail"
-                onclick="changeProductImage('images/products/product-01-3.png', this)"
-            >
-                <img src="images/products/product-01-3.png" alt="Product image 3">
-            </button>
-
-            <button
-                type="button"
-                class="thumbnail"
-                onclick="changeProductImage('images/products/product-01-4.png', this)"
-            >
-                <img src="images/products/product-01-4.png" alt="Product image 4">
-            </button>
-
-        </div>
+        <div class="product-thumbnails" id="productThumbnails"></div>
 
     </div>
 
@@ -92,7 +58,7 @@
 
         <span class="product-label">SPECIAL COLLECTION</span>
 
-        <h1>U.S. Polo Style Premium Baggy Joggers</h1>
+        <h1 id="productName">U.S. Polo Style Premium Baggy Joggers</h1>
 
         <div class="rating-row">
             <div class="product-rating">
@@ -108,20 +74,21 @@
         <div class="price-area">
             <span class="product-price-label">PRICE</span>
             <div class="product-price">
-                ৳ <span id="productPrice">999</span>
+                <del id="oldPrice">৳1190</del><br>
+                                       ৳ <span id="productPrice">999</span>
             </div>
         </div>
 
 
         <!-- SHORT DESCRIPTION -->
-        <p class="product-short-description">
+        <p class="product-short-description" id="productDescription">
             স্টাইলিশ লুক, আরামদায়ক ফিট ও প্রিমিয়াম ফিনিশিং—
             সব একসাথে। ✨
         </p>
 
 
         <!-- COLOUR -->
-        <div class="product-option">
+        <div id="colourBoxWrapper" class="product-option">
 
             <strong>Colour</strong>
 

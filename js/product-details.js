@@ -1,13 +1,101 @@
+let currentProduct = {
+    name: "U.S. Polo Style Premium Baggy Joggers",
+    price: 999,
+    oldPrice: 1399,
+    description: "স্টাইলিশ লুক, আরামদায়ক ফিট ও প্রিমিয়াম ফিনিশিং— সব একসাথে। ✨",
+    gallery: [
+        "images/products/product-01-1.png",
+        "images/products/product-01-2.png",
+        "images/products/product-01-3.png",
+        "images/products/product-01-4.png"
+    ]
+};
+
+function loadSelectedProduct() {
+    const saved = JSON.parse(localStorage.getItem("selectedProduct") || "{}");
+
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get("product");
+
+    if (productId === "2") {
+        saved.type = "special";
+        saved.index = 1;
+        
+    }
+
+    if (saved.type === "special" && saved.index === 1) {
+        currentProduct = {
+            name: "✨ Premium China Fabric T-Shirt | প্রিমিয়াম চায়না ফ্যাব্রিক টি-শার্ট ✨",
+            price: 799,
+            oldPrice: 1199,
+            description: `✨ Premium China Fabric T-Shirt | প্রিমিয়াম চায়না ফ্যাব্রিক টি-শার্ট ✨
+
+Upgrade your casual style with our Premium China Fabric T-Shirt — made for comfort, smooth feel & modern fashion.
+
+আপনার ক্যাজুয়াল লুককে আরও স্টাইলিশ করুন আমাদের প্রিমিয়াম চায়না ফ্যাব্রিক টি-শার্টের সাথে — যেখানে আছে আরাম, মসৃণ অনুভূতি ও আধুনিক ডিজাইন।
+
+👕 Premium Fabric | উন্নতমানের ফ্যাব্রিক
+🔥 Key Features:
+✔ Smooth & Soft Feel
+✔ Stylish Modern Look
+✔ Comfortable Fit
+✔ Easy to Wear
+✔ Premium Finishing
+
+🎨 Perfect for:
+Casual • Outdoor • Daily Wear
+
+📦 Fast Delivery Available
+
+🛒 Order Now & Feel The Comfort`,
+            gallery: [
+                "images/products/product-02/product-02-main.png",
+                "images/products/product-02/product-02-1.png",
+                "images/products/product-02/product-02-2.png",
+                "images/products/product-02/product-02-3.png"
+            ]
+        };
+    }
+
+    const name = document.getElementById("productName");
+    const price = document.getElementById("productPrice");
+    const oldPrice = document.getElementById("oldPrice");
+    const main = document.getElementById("mainProductImage");
+    const description = document.getElementById("productDescription");
+
+    if (name) name.textContent = currentProduct.name;
+    if (price) price.textContent = currentProduct.price;
+    if (oldPrice && currentProduct.oldPrice) oldPrice.textContent = "৳" + currentProduct.oldPrice;
+    if (main) main.src = currentProduct.gallery[0];
+    if (description) description.textContent = currentProduct.description;
+
+    const thumbnails = document.getElementById("productThumbnails");
+
+    if (thumbnails) {
+        thumbnails.innerHTML = currentProduct.gallery.map((img, i) => `
+            <button
+                type="button"
+                class="thumbnail ${i === 0 ? "active" : ""}"
+                onclick="changeProductImage('${img}', this)"
+            >
+                <img src="${img}" alt="Product image ${i + 1}">
+            </button>
+        `).join("");
+    }
+}
+
 let selectedColour = "Black";
 let selectedSize = "M";
 let productQuantity = 1;
 
-const productPrice = 999;
+const productPrice = currentProduct.price;
 
-const colourImages = {
-    Black: "images/products/product-01-1.png",
-    White: "images/products/product-01-2.png"
-};
+function getColourImages(){
+    return {
+        Black: currentProduct.gallery[0],
+        White: currentProduct.gallery[1]
+    };
+}
 
 function changeProductImage(image, button = null) {
     const main = document.getElementById("mainProductImage");
@@ -40,7 +128,7 @@ function selectColour(button, colour) {
         selected.textContent = colour;
     }
 
-    const image = colourImages[colour];
+    const image = getColourImages()[colour];
 
     if (image) {
         changeProductImage(image);
@@ -80,13 +168,13 @@ function changeProductQuantity(amount) {
 }
 
 function updateProductTotal() {
-    const total = productPrice * productQuantity;
+    const total = currentProduct.price * productQuantity;
 
     const price = document.getElementById("productPrice");
     const totalElement = document.getElementById("productTotal");
 
     if (price) {
-        price.textContent = productPrice.toLocaleString();
+        price.textContent = currentProduct.price.toLocaleString();
     }
 
     if (totalElement) {
@@ -95,7 +183,7 @@ function updateProductTotal() {
 }
 
 function getProductImage() {
-    return colourImages[selectedColour] || "images/products/product-01-1.png";
+    return getColourImages()[selectedColour] || currentProduct.gallery[0];
 }
 
 function createProductItem() {
@@ -103,7 +191,7 @@ function createProductItem() {
         name: "U.S. Polo Style Premium Baggy Joggers",
         description:
             `U.S. Polo Style Premium Baggy Joggers | ${selectedColour} | Size ${selectedSize}`,
-        price: productPrice,
+        price: currentProduct.price,
         image: getProductImage(),
         colour: selectedColour,
         size: selectedSize,
@@ -190,6 +278,7 @@ function closeImagePreview() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    loadSelectedProduct();
 
     updateProductTotal();
     updateProductCartCount();
@@ -221,3 +310,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+
+function checkColourBox() {
+    if (currentProduct && currentProduct.name.includes("Premium China Fabric T-Shirt")) {
+        const box = document.querySelector("#colourBoxWrapper");
+        if (box) box.style.display = "none";
+    }
+}
+
+setTimeout(checkColourBox, 500);

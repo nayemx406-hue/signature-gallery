@@ -116,7 +116,8 @@ function openProductDetails(index, type = "regular") {
         })
     );
 
-    window.location.href = type === "special" && index === 1 ? "product-details.html?product=2" : "product-details.html";
+    window.location.href =
+        `product-details.html?type=${type}&index=${index}`;
 }
 
 function addToCart(index, type = "regular") {

@@ -12,18 +12,33 @@ let currentProduct = {
 };
 
 function loadSelectedProduct() {
-    const saved = JSON.parse(localStorage.getItem("selectedProduct") || "{}");
+    const saved = JSON.parse(
+        localStorage.getItem("selectedProduct") || "{}"
+    );
 
     const params = new URLSearchParams(window.location.search);
-    const productId = params.get("product");
 
-    if (productId === "2") {
-        saved.type = "special";
-        saved.index = 1;
-        
+    const type = params.get("type") || saved.type;
+    const index = Number(
+        params.get("index") ?? saved.index ?? 0
+    );
+
+    if (type === "special" && index === 0) {
+        currentProduct = {
+            name: "Signature Product 01",
+            price: 999,
+            oldPrice: 1399,
+            description: "Premium US Polo Collection designed for everyday comfort, clean style and a smart modern look.",
+            gallery: [
+                "images/products/product-01-1.png",
+                "images/products/product-01-2.png",
+                "images/products/product-01-3.png",
+                "images/products/product-01-4.png"
+            ]
+        };
     }
 
-    if (saved.type === "special" && saved.index === 1) {
+    if (type === "special" && index === 1) {
         currentProduct = {
             name: "✨ Premium China Fabric T-Shirt | প্রিমিয়াম চায়না ফ্যাব্রিক টি-শার্ট ✨",
             price: 799,
@@ -35,6 +50,7 @@ Upgrade your casual style with our Premium China Fabric T-Shirt — made for com
 আপনার ক্যাজুয়াল লুককে আরও স্টাইলিশ করুন আমাদের প্রিমিয়াম চায়না ফ্যাব্রিক টি-শার্টের সাথে — যেখানে আছে আরাম, মসৃণ অনুভূতি ও আধুনিক ডিজাইন।
 
 👕 Premium Fabric | উন্নতমানের ফ্যাব্রিক
+
 🔥 Key Features:
 ✔ Smooth & Soft Feel
 ✔ Stylish Modern Look
@@ -64,32 +80,44 @@ Casual • Outdoor • Daily Wear
     const description = document.getElementById("productDescription");
 
     if (name) name.textContent = currentProduct.name;
-    if (price) price.textContent = currentProduct.price;
-    if (oldPrice && currentProduct.oldPrice) oldPrice.textContent = "৳" + currentProduct.oldPrice;
-    if (main) main.src = currentProduct.gallery[0];
-    if (description) description.textContent = currentProduct.description;
+    if (price) price.textContent = currentProduct.price.toLocaleString();
 
-    const fullDescription = document.getElementById("fullProductDescription");
-    if (fullDescription) {
-        fullDescription.innerHTML = currentProduct.description
-            .replace(/\n/g, "<br>");
+    if (oldPrice && currentProduct.oldPrice) {
+        oldPrice.textContent = "৳" + currentProduct.oldPrice;
     }
 
-    const thumbnails = document.getElementById("productThumbnails");
+    if (main) main.src = currentProduct.gallery[0];
+
+    if (description) {
+        description.textContent = currentProduct.description;
+    }
+
+    const fullDescription =
+        document.getElementById("fullProductDescription");
+
+    // Keep Product 01's original full HTML information.
+    if (fullDescription && !(type === "special" && index === 0)) {
+        fullDescription.innerHTML =
+            currentProduct.description.replace(/\n/g, "<br>");
+    }
+
+    const thumbnails =
+        document.getElementById("productThumbnails");
 
     if (thumbnails) {
-        thumbnails.innerHTML = currentProduct.gallery.map((img, i) => `
-            <button
-                type="button"
-                class="thumbnail ${i === 0 ? "active" : ""}"
-                onclick="changeProductImage('${img}', this)"
-            >
-                <img src="${img}" alt="Product image ${i + 1}">
-            </button>
-        `).join("");
+        thumbnails.innerHTML = currentProduct.gallery
+            .map((img, i) => `
+                <button
+                    type="button"
+                    class="thumbnail ${i === 0 ? "active" : ""}"
+                    onclick="changeProductImage('${img}', this)"
+                >
+                    <img src="${img}" alt="Product image ${i + 1}">
+                </button>
+            `)
+            .join("");
     }
 }
-
 let selectedColour = "Black";
 let selectedSize = "M";
 let productQuantity = 1;

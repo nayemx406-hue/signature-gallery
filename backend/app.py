@@ -68,7 +68,52 @@ def image_files(filename):
 
 @app.get("/product-details.html")
 def product_details_page():
-    return send_from_directory(BASE_DIR, "product-details.html")
+    html_path = BASE_DIR / "product-details.html"
+    html = html_path.read_text(encoding="utf-8")
+
+    product_type = request.args.get("type", "special")
+    product_index = request.args.get("index", "0")
+
+    if product_type == "special" and product_index == "1":
+        title = "Premium China Fabric T-Shirt | Signature Gallery"
+        description = "Premium China Fabric T-Shirt — comfortable fit, smooth feel and modern style."
+        image = "https://signature-gallery.onrender.com/images/products/product-02/product-02-main.png"
+    else:
+        title = "U.S. Polo Style Premium Baggy Joggers | Signature Gallery"
+        description = "Premium quality joggers with comfortable fit and stylish design."
+        image = "https://signature-gallery.onrender.com/images/products/product-01-main.png"
+
+    import re
+
+    html = re.sub(
+        r'<meta property="og:title" content="[^"]*">',
+        f'<meta property="og:title" content="{title}">',
+        html,
+        count=1
+    )
+
+    html = re.sub(
+        r'<meta property="og:description" content="[^"]*">',
+        f'<meta property="og:description" content="{description}">',
+        html,
+        count=1
+    )
+
+    html = re.sub(
+        r'<meta property="og:image" content="[^"]*">',
+        f'<meta property="og:image" content="{image}">',
+        html,
+        count=1
+    )
+
+    html = re.sub(
+        r'<title>.*?</title>',
+        f'<title>{title}</title>',
+        html,
+        count=1
+    )
+
+    return html
 
 
 @app.get("/admin.html")

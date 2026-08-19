@@ -69,6 +69,12 @@ Casual • Outdoor • Daily Wear
     if (main) main.src = currentProduct.gallery[0];
     if (description) description.textContent = currentProduct.description;
 
+    const fullDescription = document.getElementById("fullProductDescription");
+    if (fullDescription) {
+        fullDescription.innerHTML = currentProduct.description
+            .replace(/\n/g, "<br>");
+    }
+
     const thumbnails = document.getElementById("productThumbnails");
 
     if (thumbnails) {
@@ -188,9 +194,9 @@ function getProductImage() {
 
 function createProductItem() {
     return {
-        name: "U.S. Polo Style Premium Baggy Joggers",
+        name: currentProduct.name,
         description:
-            `U.S. Polo Style Premium Baggy Joggers | ${selectedColour} | Size ${selectedSize}`,
+            `${currentProduct.name} | ${selectedColour} | Size ${selectedSize}`,
         price: currentProduct.price,
         image: getProductImage(),
         colour: selectedColour,

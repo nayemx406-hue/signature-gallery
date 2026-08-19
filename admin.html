@@ -226,6 +226,940 @@
     gap:10px;
 }
 
+
+.products-menu-btn{
+    border:1px solid #d4af37 !important;
+    color:#d4af37 !important;
+    background:linear-gradient(135deg,#111,#1c1c1c) !important;
+    font-weight:700;
+    box-shadow:0 4px 18px rgba(212,175,55,.18);
+    transition:.25s ease;
+}
+
+.products-menu-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 7px 24px rgba(212,175,55,.32);
+}
+
+.products-menu-btn:active{
+    transform:scale(.97);
+}
+
+
+/* PRODUCT BUILDER */
+.product-manager-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    margin-bottom:25px;
+}
+
+.pm-eyebrow{
+    font-size:11px;
+    letter-spacing:2px;
+    font-weight:800;
+    opacity:.65;
+}
+
+.product-manager-header h2{
+    margin:6px 0;
+}
+
+.product-manager-header p{
+    margin:0;
+    opacity:.65;
+}
+
+.add-product-btn,
+.save-product-btn,
+.cancel-builder-btn,
+.secondary-builder-btn{
+    border:0;
+    border-radius:12px;
+    padding:12px 18px;
+    cursor:pointer;
+    font-weight:700;
+}
+
+.add-product-btn,
+.save-product-btn{
+    background:#111;
+    color:#fff;
+}
+
+.product-builder{
+    display:grid;
+    gap:18px;
+    margin-bottom:25px;
+}
+
+.builder-title{
+    padding:18px;
+    border-radius:18px;
+    background:linear-gradient(135deg,#111,#292929);
+    color:#fff;
+}
+
+.builder-title span{
+    display:block;
+    font-size:12px;
+    letter-spacing:2px;
+    font-weight:800;
+}
+
+.builder-title small{
+    display:block;
+    margin-top:5px;
+    opacity:.7;
+}
+
+.builder-card{
+    padding:20px;
+    border-radius:18px;
+    background:#fff;
+    border:1px solid #e5e7eb;
+}
+
+.builder-card h3{
+    margin-top:0;
+}
+
+.builder-card label{
+    display:block;
+    margin:12px 0 7px;
+    font-weight:600;
+}
+
+.builder-card input[type="text"],
+.builder-card input[type="number"],
+.builder-card input[type="file"],
+.builder-card textarea,
+.builder-card select{
+    width:100%;
+    box-sizing:border-box;
+    padding:12px;
+    border:1px solid #d9dde3;
+    border-radius:10px;
+    background:#fafafa;
+}
+
+.builder-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+}
+
+.choice-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+}
+
+.choice-grid label{
+    margin:0;
+    padding:11px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.choice-grid.disabled{
+    opacity:.45;
+    pointer-events:none;
+}
+
+.card-heading-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.card-heading-row h3{
+    margin-bottom:0;
+}
+
+.toggle-row{
+    display:flex !important;
+    align-items:center;
+    gap:10px;
+}
+
+.switch input{
+    display:none;
+}
+
+.switch span{
+    display:block;
+    width:46px;
+    height:24px;
+    border-radius:20px;
+    background:#ccc;
+    position:relative;
+    cursor:pointer;
+}
+
+.switch span:after{
+    content:"";
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    background:#fff;
+    position:absolute;
+    top:3px;
+    left:3px;
+    transition:.2s;
+}
+
+.switch input:checked + span{
+    background:#111;
+}
+
+.switch input:checked + span:after{
+    left:25px;
+}
+
+.builder-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+}
+
+.cancel-builder-btn{
+    background:#eee;
+}
+
+.image-upload-note{
+    margin-top:8px;
+    font-size:12px;
+    opacity:.6;
+}
+
+@media(max-width:700px){
+    .product-manager-header{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .builder-grid{
+        grid-template-columns:1fr;
+    }
+
+    .choice-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+
+
+/* ============================================================
+   SIGNATURE GALLERY — PREMIUM PRODUCT BUILDER UI
+   ============================================================ */
+
+#productForm {
+    gap: 22px;
+}
+
+#productForm .builder-card {
+    position: relative;
+    padding: 26px;
+    border-radius: 24px;
+    background: rgba(255,255,255,.94);
+    border: 1px solid rgba(20,20,20,.08);
+    box-shadow: 0 12px 35px rgba(0,0,0,.06);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+#productForm .builder-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 45px rgba(0,0,0,.09);
+}
+
+#productForm .builder-card h3 {
+    margin: 0 0 22px;
+    font-size: 18px;
+    font-weight: 800;
+    color: #171717;
+}
+
+#productForm .builder-card h3::after {
+    content: "";
+    display: block;
+    width: 38px;
+    height: 3px;
+    margin-top: 9px;
+    border-radius: 10px;
+    background: #111;
+}
+
+#productForm label:not(.toggle-row):not(.switch) {
+    display: block;
+    margin: 15px 0 8px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .7px;
+    text-transform: uppercase;
+    color: #555;
+}
+
+#productForm input[type="text"],
+#productForm input[type="number"],
+#productForm textarea,
+#productForm select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px 17px;
+    border: 1px solid #e2e2e2;
+    border-radius: 14px;
+    background: #fafafa;
+    color: #151515;
+    font-size: 14px;
+    outline: none;
+    transition: all .2s ease;
+}
+
+#productForm textarea {
+    min-height: 130px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+#productForm input:focus,
+#productForm textarea:focus,
+#productForm select:focus {
+    background: #fff;
+    border-color: #111;
+    box-shadow: 0 0 0 4px rgba(17,17,17,.06);
+}
+
+#productForm .choice-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+#productForm .choice-grid label {
+    position: relative;
+    margin: 0 !important;
+    padding: 11px 17px;
+    border: 1px solid #dedede;
+    border-radius: 999px;
+    background: #fff;
+    color: #333;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+#productForm .choice-grid label:hover {
+    border-color: #111;
+    transform: translateY(-1px);
+}
+
+#productForm .choice-grid input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#productForm .choice-grid label:has(input:checked) {
+    background: #111;
+    border-color: #111;
+    color: #fff;
+    box-shadow: 0 7px 18px rgba(0,0,0,.15);
+}
+
+#productForm .toggle-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    background: #f7f7f7;
+    color: #333;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+#productForm input[type="file"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 18px;
+    margin-bottom: 8px;
+    border: 1.5px dashed #cfcfcf;
+    border-radius: 17px;
+    background: #fafafa;
+    cursor: pointer;
+}
+
+#productForm input[type="file"]:hover {
+    border-color: #111;
+    background: #f5f5f5;
+}
+
+#productForm .image-upload-note {
+    margin-top: 10px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: #f7f7f7;
+    color: #777;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+#productForm .secondary-builder-btn,
+#productForm .cancel-builder-btn,
+#productForm .save-product-btn {
+    min-height: 48px;
+    padding: 0 20px;
+    border-radius: 14px;
+    font-weight: 800;
+    transition: all .2s ease;
+}
+
+#productForm .secondary-builder-btn {
+    margin-top: 15px;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    color: #222;
+}
+
+#productForm .secondary-builder-btn:hover {
+    background: #111;
+    color: #fff;
+    border-color: #111;
+}
+
+#productForm .save-product-btn {
+    background: #111;
+    color: #fff;
+    border: 1px solid #111;
+    box-shadow: 0 10px 25px rgba(0,0,0,.15);
+}
+
+#productForm .save-product-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(0,0,0,.2);
+}
+
+#productForm .cancel-builder-btn {
+    background: #fff;
+    border: 1px solid #ddd;
+    color: #444;
+}
+
+@media (max-width: 650px) {
+    #productForm .builder-card {
+        padding: 20px;
+        border-radius: 20px;
+    }
+
+    #productForm .builder-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #productForm .builder-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}
+
+
+
+/* ============================================================
+   SIGNATURE GALLERY — 3D BLUE / OFF-WHITE PRO THEME
+   ============================================================ */
+
+body {
+    background:
+        radial-gradient(circle at 15% 10%, rgba(37,99,235,.07), transparent 28%),
+        radial-gradient(circle at 85% 20%, rgba(29,78,216,.06), transparent 30%),
+        #f6f4ef !important;
+}
+
+/* Product Builder */
+
+#productForm {
+    gap: 24px !important;
+}
+
+/* Builder title */
+
+#productForm .builder-title {
+    position: relative;
+    overflow: hidden;
+    background:
+        linear-gradient(145deg, #2563eb 0%, #1d4ed8 45%, #123b9c 100%) !important;
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 26px !important;
+    padding: 28px !important;
+    box-shadow:
+        0 18px 35px rgba(29,78,216,.28),
+        inset 0 1px 0 rgba(255,255,255,.35),
+        inset 0 -8px 18px rgba(0,0,0,.12);
+}
+
+#productForm .builder-title::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    right: -60px;
+    top: -90px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.12);
+}
+
+#productForm .builder-title span,
+#productForm .builder-title small {
+    position: relative;
+    z-index: 1;
+}
+
+#productForm .builder-title span {
+    color: #fff !important;
+    font-size: 20px !important;
+    font-weight: 900 !important;
+    letter-spacing: 1.2px;
+}
+
+#productForm .builder-title small {
+    color: rgba(255,255,255,.78) !important;
+}
+
+/* Main Cards */
+
+#productForm .builder-card {
+    background:
+        linear-gradient(145deg, #2563eb 0%, #1d4ed8 52%, #17419f 100%) !important;
+    border: 1px solid rgba(255,255,255,.18) !important;
+    border-radius: 26px !important;
+    box-shadow:
+        0 20px 40px rgba(29,78,216,.25),
+        0 5px 12px rgba(0,0,0,.12),
+        inset 0 1px 0 rgba(255,255,255,.28),
+        inset 0 -10px 20px rgba(0,0,0,.10) !important;
+    color: #fff !important;
+}
+
+#productForm .builder-card:hover {
+    transform: translateY(-4px) !important;
+    box-shadow:
+        0 28px 55px rgba(29,78,216,.30),
+        0 8px 18px rgba(0,0,0,.14),
+        inset 0 1px 0 rgba(255,255,255,.32) !important;
+}
+
+/* Card Headings */
+
+#productForm .builder-card h3 {
+    color: #fff !important;
+    text-shadow: 0 2px 5px rgba(0,0,0,.18);
+}
+
+#productForm .builder-card h3::after {
+    background: rgba(255,255,255,.85) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,.18);
+}
+
+/* Labels */
+
+#productForm label:not(.toggle-row):not(.switch) {
+    color: rgba(255,255,255,.88) !important;
+}
+
+/* Inputs */
+
+#productForm input[type="text"],
+#productForm input[type="number"],
+#productForm textarea,
+#productForm select {
+    background: #fff !important;
+    color: #151515 !important;
+    border: 2px solid rgba(255,255,255,.35) !important;
+    border-radius: 15px !important;
+    box-shadow:
+        0 5px 12px rgba(0,0,0,.12),
+        inset 0 1px 0 rgba(255,255,255,.9);
+}
+
+#productForm input:focus,
+#productForm textarea:focus,
+#productForm select:focus {
+    border-color: #93c5fd !important;
+    box-shadow:
+        0 0 0 4px rgba(255,255,255,.18),
+        0 8px 20px rgba(0,0,0,.15) !important;
+}
+
+/* Selection pills */
+
+#productForm .choice-grid label {
+    background: #fff !important;
+    color: #1d4ed8 !important;
+    border: 2px solid #fff !important;
+    box-shadow:
+        0 5px 12px rgba(0,0,0,.12),
+        inset 0 1px 0 rgba(255,255,255,.9);
+}
+
+#productForm .choice-grid label:hover {
+    transform: translateY(-3px) !important;
+    box-shadow:
+        0 9px 18px rgba(0,0,0,.18);
+}
+
+/* Selected */
+
+#productForm .choice-grid label:has(input:checked) {
+    background: #0b3fae !important;
+    color: #fff !important;
+    border-color: #fff !important;
+    box-shadow:
+        0 7px 18px rgba(0,0,0,.25),
+        inset 0 2px 5px rgba(255,255,255,.18),
+        inset 0 -4px 8px rgba(0,0,0,.18) !important;
+}
+
+/* Toggle rows */
+
+#productForm .toggle-row {
+    background: rgba(255,255,255,.13) !important;
+    border: 1px solid rgba(255,255,255,.20);
+    color: #fff !important;
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.16),
+        0 5px 12px rgba(0,0,0,.10);
+}
+
+/* File upload */
+
+#productForm input[type="file"] {
+    background: rgba(255,255,255,.96) !important;
+    color: #333 !important;
+    border: 2px dashed rgba(255,255,255,.85) !important;
+    box-shadow:
+        0 8px 18px rgba(0,0,0,.12),
+        inset 0 1px 0 #fff;
+}
+
+#productForm input[type="file"]:hover {
+    border-color: #fff !important;
+    transform: translateY(-2px);
+}
+
+/* Upload note */
+
+#productForm .image-upload-note {
+    background: rgba(255,255,255,.12) !important;
+    color: rgba(255,255,255,.78) !important;
+    border: 1px solid rgba(255,255,255,.16);
+}
+
+/* Secondary button */
+
+#productForm .secondary-builder-btn {
+    background: #fff !important;
+    color: #1d4ed8 !important;
+    border: 2px solid #fff !important;
+    box-shadow:
+        0 7px 15px rgba(0,0,0,.14);
+}
+
+#productForm .secondary-builder-btn:hover {
+    background: #0b3fae !important;
+    color: #fff !important;
+    border-color: #fff !important;
+    transform: translateY(-3px);
+}
+
+/* Save */
+
+#productForm .save-product-btn {
+    background: #fff !important;
+    color: #1d4ed8 !important;
+    border: 2px solid #fff !important;
+    box-shadow:
+        0 12px 25px rgba(0,0,0,.22),
+        inset 0 1px 0 rgba(255,255,255,.9);
+}
+
+#productForm .save-product-btn:hover {
+    background: #0b3fae !important;
+    color: #fff !important;
+    transform: translateY(-3px);
+}
+
+/* Cancel */
+
+#productForm .cancel-builder-btn {
+    background: rgba(255,255,255,.13) !important;
+    color: #fff !important;
+    border: 1px solid rgba(255,255,255,.35) !important;
+}
+
+#productForm .cancel-builder-btn:hover {
+    background: rgba(255,255,255,.24) !important;
+    color: #fff !important;
+}
+
+/* Disabled selections */
+
+#productForm .choice-grid.disabled {
+    opacity: .55;
+}
+
+/* Price emphasis */
+
+#productNewPrice {
+    color: #1d4ed8 !important;
+    font-weight: 900 !important;
+}
+
+/* 3D action area */
+
+#productForm .builder-actions {
+    padding: 20px;
+    border-radius: 24px;
+    background: linear-gradient(145deg,#2563eb,#123b9c);
+    box-shadow:
+        0 18px 35px rgba(29,78,216,.25),
+        inset 0 1px 0 rgba(255,255,255,.25);
+}
+
+/* Mobile */
+
+@media (max-width: 650px) {
+    #productForm .builder-card,
+    #productForm .builder-title {
+        border-radius: 21px !important;
+    }
+}
+
+
+
+/* ============================================================
+   PREMIUM UPLOAD + ALWAYS VISIBLE SIZE / COLOUR
+   ============================================================ */
+
+#productForm .choice-grid.disabled {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: .48 !important;
+    filter: grayscale(.15);
+}
+
+#productForm .choice-grid.disabled label {
+    cursor: not-allowed !important;
+}
+
+#productForm .choice-grid:not(.disabled) {
+    opacity: 1 !important;
+    filter: none;
+}
+
+/* Premium file upload */
+
+#productForm input[type="file"] {
+    min-height: 76px;
+    padding: 24px 20px !important;
+    border: 2px dashed rgba(255,255,255,.75) !important;
+    border-radius: 20px !important;
+    background:
+        linear-gradient(145deg, #ffffff, #f1f5f9) !important;
+    color: #1d4ed8 !important;
+    font-weight: 700;
+    box-shadow:
+        0 10px 22px rgba(0,0,0,.15),
+        inset 0 1px 0 #fff;
+}
+
+#productForm input[type="file"]::file-selector-button {
+    margin-right: 14px;
+    padding: 11px 17px;
+    border: 0;
+    border-radius: 12px;
+    background: #1d4ed8;
+    color: #fff;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow:
+        0 6px 14px rgba(29,78,216,.28);
+}
+
+#productForm input[type="file"]:hover {
+    border-color: #fff !important;
+    transform: translateY(-2px);
+    box-shadow:
+        0 15px 28px rgba(0,0,0,.18),
+        inset 0 1px 0 #fff;
+}
+
+/* Upload labels */
+
+#productForm .builder-card label[for="productMainImage"],
+#productForm .builder-card label[for="productGallery"] {
+    color: #fff !important;
+    font-weight: 800 !important;
+}
+
+
+/* ============================================================
+   CLEAN PREMIUM SECTION LABELS
+   ============================================================ */
+
+.premium-section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 8px 4px -10px;
+    color: #1d4ed8;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+}
+
+.premium-section-label::before {
+    content: "";
+    width: 28px;
+    height: 3px;
+    border-radius: 20px;
+    background: #1d4ed8;
+    box-shadow: 0 2px 6px rgba(29,78,216,.25);
+}
+
+.premium-section-label::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: rgba(29,78,216,.18);
+}
+
+
+
+/* ============================================================
+   PRODUCT MANAGER — PREMIUM 3D BLUE / OFF-WHITE UI
+   ============================================================ */
+
+.product-manager-header {
+    position: relative;
+}
+
+.add-product-btn {
+    background: linear-gradient(145deg, #2563eb, #1d4ed8) !important;
+    color: #fff !important;
+    border: 0 !important;
+    border-radius: 15px !important;
+    padding: 13px 20px !important;
+    font-weight: 800 !important;
+    letter-spacing: .2px;
+    box-shadow:
+        0 9px 0 #163ea8,
+        0 15px 25px rgba(29,78,216,.25) !important;
+    transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.add-product-btn:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 11px 0 #163ea8,
+        0 19px 30px rgba(29,78,216,.30) !important;
+}
+
+.add-product-btn:active {
+    transform: translateY(5px);
+    box-shadow:
+        0 4px 0 #163ea8,
+        0 8px 15px rgba(29,78,216,.20) !important;
+}
+
+/* Product cards */
+
+.product-admin-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(29,78,216,.10) !important;
+    border-radius: 22px !important;
+    background:
+        linear-gradient(145deg, #ffffff, #f4f7fb) !important;
+    box-shadow:
+        0 12px 25px rgba(15,23,42,.10),
+        0 3px 7px rgba(15,23,42,.05),
+        inset 0 1px 0 #ffffff !important;
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+.product-admin-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    background: linear-gradient(#3b82f6, #1d4ed8);
+}
+
+.product-admin-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 20px 35px rgba(15,23,42,.14),
+        0 5px 10px rgba(29,78,216,.08),
+        inset 0 1px 0 #ffffff !important;
+}
+
+.product-admin-card h3 {
+    color: #172554 !important;
+    font-weight: 900 !important;
+    letter-spacing: -.2px;
+}
+
+.product-admin-card p {
+    color: #475569 !important;
+}
+
+.product-admin-card strong {
+    color: #1e3a8a !important;
+}
+
+/* Product card buttons */
+
+.product-admin-card button {
+    border: 0 !important;
+    border-radius: 11px !important;
+    padding: 9px 15px !important;
+    font-weight: 800 !important;
+    cursor: pointer;
+    transition: transform .16s ease, box-shadow .16s ease;
+}
+
+.product-admin-card button:hover {
+    transform: translateY(-2px);
+}
+
+.product-admin-card button:first-child {
+    background: linear-gradient(145deg, #3b82f6, #1d4ed8) !important;
+    color: #fff !important;
+    box-shadow:
+        0 5px 0 #163ea8,
+        0 8px 15px rgba(29,78,216,.20);
+}
+
+.product-admin-card button:last-child {
+    background: #fff1f2 !important;
+    color: #be123c !important;
+    border: 1px solid #fecdd3 !important;
+    box-shadow: 0 5px 12px rgba(190,24,93,.08);
+}
+
 </style>
 </head>
 
@@ -244,6 +1178,7 @@
     <button onclick="loadByStatus('Shipped')">📦 Shipped</button>
     <button onclick="loadByStatus('Delivered')">🚚 Delivered</button>
     <button onclick="loadByStatus('Cancelled')">❌ Cancelled</button>
+    <button class="products-menu-btn" onclick="showProductsManager()">＋ Products</button>
 </nav>
 
 <div class="summary-cards">
@@ -261,6 +1196,201 @@
     <div id="orders">
         <div class="loading">Loading orders...</div>
     </div>
+</section>
+
+<section class="admin product-manager" id="productsSection" style="display:none;">
+
+    <div class="product-manager-header">
+        <div>
+            <span class="pm-eyebrow">CATALOG CONTROL</span>
+            <h2>Product Manager</h2>
+            <p>Create and control every product directly from Admin.</p>
+        </div>
+
+        <button type="button" class="add-product-btn" onclick="showProductForm()">
+            ＋ Add Product
+        </button>
+    </div>
+
+    <div id="productForm" class="product-builder" style="display:none;">
+
+        <div class="builder-title">
+            <span>PRODUCT BUILDER</span>
+            <small>Everything you need to publish a product</small>
+        </div>
+
+        <div class="premium-section-label">CATEGORY</div>
+        <div class="builder-card">
+            <h3>📦 Product Placement</h3>
+
+            <label>Product Category / Box</label>
+
+            <select id="productCategory">
+                <option value="special">Special Selection</option>
+                <option value="collection">The Collection</option>
+            </select>
+
+            <button type="button" class="secondary-builder-btn">
+                ＋ Create New Category
+            </button>
+        </div>
+
+        <div class="premium-section-label">BASIC INFORMATION</div>
+        <div class="builder-card">
+            <h3>📝 Basic Information</h3>
+
+            <label>Product Name</label>
+            <input id="productNameInput"
+                   type="text"
+                   placeholder="Enter product name">
+
+            <label>Description</label>
+            <textarea id="productDescriptionInput"
+                      rows="6"
+                      placeholder="Write complete product description..."></textarea>
+        </div>
+
+        <div class="premium-section-label">IMAGES</div>
+        <div class="builder-card">
+            <h3>📸 Product Images</h3>
+
+            <label>Main Product Photo</label>
+            <input id="productMainImage"
+                   type="file"
+                   accept="image/*">
+
+            <label>Additional Photos</label>
+            <input id="productGallery"
+                   type="file"
+                   accept="image/*"
+                   multiple>
+
+            <div class="image-upload-note">
+                Upload multiple product photos. The first image will be used as the main image.
+            </div>
+        </div>
+
+        <div class="premium-section-label">PRICING & OFFER</div>
+        <div class="builder-card">
+            <h3>💰 Pricing & Offer</h3>
+
+            <div class="builder-grid">
+                <div>
+                    <label>Old Price</label>
+                    <input id="productOldPrice"
+                           type="number"
+                           min="0"
+                           placeholder="1399">
+                </div>
+
+                <div>
+                    <label>New Price</label>
+                    <input id="productNewPrice"
+                           type="number"
+                           min="0"
+                           placeholder="999">
+                </div>
+
+                <div>
+                    <label>Offer / Discount %</label>
+                    <input id="productOffer"
+                           type="number"
+                           min="0"
+                           max="100"
+                           placeholder="30">
+                </div>
+            </div>
+
+            <label class="toggle-row">
+                <input id="offerEnabled" type="checkbox">
+                <span>Show animated offer badge</span>
+            </label>
+
+            <input id="offerText"
+                   type="text"
+                   placeholder="Example: LIMITED OFFER">
+        </div>
+
+        <div class="premium-section-label">COLOURS</div>
+        <div class="builder-card">
+            <div class="card-heading-row">
+                <h3>🎨 Colours</h3>
+
+                <label class="switch">
+                    <input id="coloursEnabled" type="checkbox">
+                    <span></span>
+                </label>
+            </div>
+
+            <div id="colourOptions" class="choice-grid disabled">
+
+                <label><input type="checkbox" value="White"> White</label>
+                <label><input type="checkbox" value="Black"> Black</label>
+                <label><input type="checkbox" value="Red"> Red</label>
+                <label><input type="checkbox" value="Blue"> Blue</label>
+                <label><input type="checkbox" value="Green"> Green</label>
+                <label><input type="checkbox" value="Yellow"> Yellow</label>
+                <label><input type="checkbox" value="Brown"> Brown</label>
+                <label><input type="checkbox" value="Grey"> Grey</label>
+                <label><input type="checkbox" value="Pink"> Pink</label>
+                <label><input type="checkbox" value="Purple"> Purple</label>
+
+            </div>
+        </div>
+
+        <div class="premium-section-label">SIZES</div>
+        <div class="builder-card">
+            <div class="card-heading-row">
+                <h3>📏 Sizes</h3>
+
+                <label class="switch">
+                    <input id="sizesEnabled" type="checkbox">
+                    <span></span>
+                </label>
+            </div>
+
+            <div id="sizeOptions" class="choice-grid disabled">
+
+                <label><input type="checkbox" value="S"> S</label>
+                <label><input type="checkbox" value="M"> M</label>
+                <label><input type="checkbox" value="L"> L</label>
+                <label><input type="checkbox" value="XL"> XL</label>
+                <label><input type="checkbox" value="XXL"> XXL</label>
+                <label><input type="checkbox" value="XXXL"> XXXL</label>
+
+            </div>
+        </div>
+
+        <div class="premium-section-label">STATUS</div>
+        <div class="builder-card">
+            <h3>⚙️ Product Status</h3>
+
+            <label class="toggle-row">
+                <input id="productActive" type="checkbox" checked>
+                <span>Publish product on website</span>
+            </label>
+        </div>
+
+        <div class="builder-actions">
+            <button type="button"
+                    class="cancel-builder-btn"
+                    onclick="hideProductForm()">
+                Cancel
+            </button>
+
+            <button type="button"
+                    class="save-product-btn"
+                    onclick="saveProduct()">
+                ✓ Save Product
+            </button>
+        </div>
+
+    </div>
+
+    <div id="productsList">
+        <div class="loading">Products will appear here...</div>
+    </div>
+
 </section>
 
 <script>
@@ -491,6 +1621,502 @@ loadOrders();
 function toggleMenu(){
     document.getElementById("adminMenu")
     .classList.toggle("active");
+}
+
+
+function showProductsManager(){
+    const productsSection = document.getElementById("productsSection");
+    const ordersSection = document.querySelector("section.admin:not(#productsSection)");
+
+    if (ordersSection) {
+        ordersSection.style.display = "none";
+    }
+
+    if (productsSection) {
+        productsSection.style.display = "block";
+    }
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* ============================================================
+   PRODUCT MANAGER
+   ============================================================ */
+
+let editingProductId = null;
+
+function showProductForm(product = null) {
+    const form = document.getElementById("productForm");
+    if (!form) return;
+
+    editingProductId = product ? product.id : null;
+
+    form.style.display = "grid";
+
+    if (product) {
+        document.getElementById("productCategory").value =
+            product.category || "General";
+
+        document.getElementById("productNameInput").value =
+            product.name || "";
+
+        document.getElementById("productDescriptionInput").value =
+            product.description || "";
+
+        document.getElementById("productOldPrice").value =
+            product.old_price || "";
+
+        document.getElementById("productNewPrice").value =
+            product.price || "";
+
+        document.getElementById("productOffer").value =
+            product.offer_percent || "";
+
+        document.getElementById("offerEnabled").checked =
+            Number(product.offer_percent || 0) > 0;
+
+        document.getElementById("offerText").value =
+            product.offer_text || "LIMITED OFFER";
+
+        document.getElementById("coloursEnabled").checked =
+            !!product.colours_enabled;
+
+        document.getElementById("sizesEnabled").checked =
+            !!product.sizes_enabled;
+
+        document.getElementById("productActive").checked =
+            product.active !== false;
+
+        updateChoiceState("colourOptions", "coloursEnabled");
+        updateChoiceState("sizeOptions", "sizesEnabled");
+
+        document.querySelectorAll("#colourOptions input").forEach(cb => {
+            cb.checked = (product.colours || []).includes(cb.value);
+        });
+
+        document.querySelectorAll("#sizeOptions input").forEach(cb => {
+            cb.checked = (product.sizes || []).includes(cb.value);
+        });
+    } else {
+        resetProductForm();
+    }
+
+    form.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+
+function hideProductForm() {
+    const form = document.getElementById("productForm");
+    if (form) form.style.display = "none";
+
+    editingProductId = null;
+    resetProductForm();
+}
+
+function resetProductForm() {
+    const ids = [
+        "productNameInput",
+        "productDescriptionInput",
+        "productOldPrice",
+        "productNewPrice",
+        "productOffer",
+        "offerText"
+    ];
+
+    ids.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = "";
+    });
+
+    const category = document.getElementById("productCategory");
+    if (category) category.value = "special";
+
+    const offerEnabled = document.getElementById("offerEnabled");
+    if (offerEnabled) offerEnabled.checked = false;
+
+    const coloursEnabled = document.getElementById("coloursEnabled");
+    if (coloursEnabled) coloursEnabled.checked = false;
+
+    const sizesEnabled = document.getElementById("sizesEnabled");
+    if (sizesEnabled) sizesEnabled.checked = false;
+
+    const active = document.getElementById("productActive");
+    if (active) active.checked = true;
+
+    document.querySelectorAll(
+        "#colourOptions input, #sizeOptions input"
+    ).forEach(cb => cb.checked = false);
+
+    updateChoiceState("colourOptions", "coloursEnabled");
+    updateChoiceState("sizeOptions", "sizesEnabled");
+
+    const main = document.getElementById("productMainImage");
+    const gallery = document.getElementById("productGallery");
+
+    if (main) main.value = "";
+    if (gallery) gallery.value = "";
+}
+
+function updateChoiceState(containerId, toggleId) {
+    const container = document.getElementById(containerId);
+    const toggle = document.getElementById(toggleId);
+
+    if (!container || !toggle) return;
+
+    container.classList.toggle("disabled", !toggle.checked);
+
+    container.querySelectorAll("input").forEach(input => {
+        input.disabled = !toggle.checked;
+    });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const colourToggle = document.getElementById("coloursEnabled");
+    const sizeToggle = document.getElementById("sizesEnabled");
+
+    if (colourToggle) {
+        colourToggle.addEventListener("change", () => {
+            updateChoiceState("colourOptions", "coloursEnabled");
+        });
+    }
+
+    if (sizeToggle) {
+        sizeToggle.addEventListener("change", () => {
+            updateChoiceState("sizeOptions", "sizesEnabled");
+        });
+    }
+
+    updateChoiceState("colourOptions", "coloursEnabled");
+    updateChoiceState("sizeOptions", "sizesEnabled");
+
+    loadProducts();
+});
+
+async function saveProduct() {
+
+    const name = document.getElementById("productNameInput")?.value.trim();
+
+    if (!name) {
+        alert("Please enter product name.");
+        return;
+    }
+
+    const oldPrice =
+        Number(document.getElementById("productOldPrice")?.value || 0);
+
+    const newPrice =
+        Number(document.getElementById("productNewPrice")?.value || 0);
+
+    const offer =
+        Number(document.getElementById("productOffer")?.value || 0);
+
+    if (newPrice < 0 || oldPrice < 0) {
+        alert("Price cannot be negative.");
+        return;
+    }
+
+    if (offer < 0 || offer > 100) {
+        alert("Offer must be between 0 and 100.");
+        return;
+    }
+
+    const coloursEnabled =
+        document.getElementById("coloursEnabled")?.checked || false;
+
+    const sizesEnabled =
+        document.getElementById("sizesEnabled")?.checked || false;
+
+    const colours = coloursEnabled
+        ? [...document.querySelectorAll(
+            "#colourOptions input:checked"
+          )].map(x => x.value)
+        : [];
+
+    const sizes = sizesEnabled
+        ? [...document.querySelectorAll(
+            "#sizeOptions input:checked"
+          )].map(x => x.value)
+        : [];
+
+    const category =
+        document.getElementById("productCategory")?.value || "General";
+
+    const description =
+        document.getElementById("productDescriptionInput")?.value || "";
+
+    const active =
+        document.getElementById("productActive")?.checked !== false;
+
+    /*
+       Image files are selected here.
+
+       The current backend API expects image paths/URLs,
+       so for this first safe version we do not send raw files.
+       Existing uploaded image paths can be entered later
+       through the image system without disturbing the site.
+    */
+
+    const mainImage =
+        document.getElementById("productMainImage");
+
+    const galleryInput =
+        document.getElementById("productGallery");
+
+    let image = "";
+    let images = [];
+
+    async function uploadProductImage(file) {
+        const formData = new FormData();
+        formData.append("file", file);
+
+        const response = await fetch("/api/upload", {
+            method: "POST",
+            body: formData
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            throw new Error(result.error || "Image upload failed.");
+        }
+
+        return result.url;
+    }
+
+    if (mainImage && mainImage.files.length > 0) {
+        image = await uploadProductImage(mainImage.files[0]);
+        images.push(image);
+    }
+
+    if (galleryInput && galleryInput.files.length > 0) {
+        for (const file of galleryInput.files) {
+            const uploadedUrl = await uploadProductImage(file);
+
+            if (!images.includes(uploadedUrl)) {
+                images.push(uploadedUrl);
+            }
+        }
+    }
+
+    const payload = {
+        name,
+        description,
+        image,
+        images,
+        old_price: oldPrice,
+        price: newPrice,
+        colours_enabled: coloursEnabled,
+        colours,
+        sizes_enabled: sizesEnabled,
+        sizes,
+        active,
+        category,
+        offer_percent: offer
+    };
+
+    try {
+
+        const url = editingProductId
+            ? `/api/products/${editingProductId}`
+            : "/api/products";
+
+        const method = editingProductId ? "PUT" : "POST";
+
+        const response = await fetch(url, {
+            method,
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            throw new Error(result.error || "Failed to save product.");
+        }
+
+        alert(
+            editingProductId
+                ? "Product updated successfully."
+                : "Product added successfully."
+        );
+
+        hideProductForm();
+        await loadProducts();
+
+    } catch (error) {
+
+        console.error(error);
+        alert("Product save failed: " + error.message);
+    }
+}
+
+async function loadProducts() {
+
+    const container =
+        document.getElementById("productsList");
+
+    if (!container) return;
+
+    container.innerHTML =
+        '<div class="loading">Loading products...</div>';
+
+    try {
+
+        const response =
+            await fetch("/api/products");
+
+        if (!response.ok) {
+            throw new Error("Failed to load products.");
+        }
+
+        const products =
+            await response.json();
+
+        if (!products.length) {
+            container.innerHTML =
+                "<p>No products added yet.</p>";
+            return;
+        }
+
+        container.innerHTML = products.map(product => {
+
+            const colours =
+                product.colours_enabled &&
+                product.colours?.length
+                    ? product.colours.join(", ")
+                    : "Disabled";
+
+            const sizes =
+                product.sizes_enabled &&
+                product.sizes?.length
+                    ? product.sizes.join(", ")
+                    : "Disabled";
+
+            const offer =
+                Number(product.offer_percent || 0);
+
+            return `
+                <div class="admin-order product-admin-card">
+
+                    <h3>${escapeHtml(product.name)}</h3>
+
+                    <p>
+                        <strong>Category:</strong>
+                        ${escapeHtml(product.category || "General")}
+                    </p>
+
+                    <p>
+                        <strong>Price:</strong>
+                        ৳${Number(product.price || 0).toLocaleString()}
+                        ${
+                            Number(product.old_price || 0) > 0
+                            ? ` <del>৳${Number(product.old_price).toLocaleString()}</del>`
+                            : ""
+                        }
+                    </p>
+
+                    <p>
+                        <strong>Offer:</strong>
+                        ${offer > 0 ? offer + "%" : "None"}
+                    </p>
+
+                    <p>
+                        <strong>Colours:</strong>
+                        ${escapeHtml(colours)}
+                    </p>
+
+                    <p>
+                        <strong>Sizes:</strong>
+                        ${escapeHtml(sizes)}
+                    </p>
+
+                    <p>
+                        <strong>Status:</strong>
+                        ${product.active ? "🟢 Published" : "🔴 Hidden"}
+                    </p>
+
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+
+                        <button
+                            type="button"
+                            onclick='editProduct(${JSON.stringify(product)})'>
+                            ✏️ Edit
+                        </button>
+
+                        <button
+                            type="button"
+                            onclick="deleteProduct(${product.id})">
+                            🗑️ Delete
+                        </button>
+
+                    </div>
+
+                </div>
+            `;
+
+        }).join("");
+
+    } catch (error) {
+
+        console.error(error);
+
+        container.innerHTML =
+            "<p>Failed loading products.</p>";
+    }
+}
+
+function editProduct(product) {
+    showProductForm(product);
+}
+
+async function deleteProduct(id) {
+
+    if (!confirm("Delete this product permanently?")) {
+        return;
+    }
+
+    try {
+
+        const response =
+            await fetch(`/api/products/${id}`, {
+                method: "DELETE"
+            });
+
+        const result =
+            await response.json();
+
+        if (!response.ok) {
+            throw new Error(
+                result.error || "Delete failed."
+            );
+        }
+
+        await loadProducts();
+
+    } catch (error) {
+
+        console.error(error);
+        alert("Delete failed: " + error.message);
+    }
+}
+
+function escapeHtml(value) {
+
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }
 
 </script>

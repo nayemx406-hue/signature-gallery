@@ -6375,3 +6375,55 @@ body {
         0 10px 24px rgba(24,119,242,.12) !important;
 }
 
+
+/* ===== FINAL BLUE PAYMENT BOX ===== */
+
+#bkashBox input#paymentNumber,
+#bkashBox input#trxId {
+    background: linear-gradient(145deg, #e8f7ff, #cfeeff) !important;
+    color: #111827 !important;
+    border: 2px solid #8bcff5 !important;
+    border-radius: 15px !important;
+    box-shadow:
+        inset 0 2px 4px rgba(255,255,255,.9),
+        0 8px 20px rgba(24,119,242,.16) !important;
+}
+
+#bkashBox label {
+    color: #111827 !important;
+    display: block !important;
+    font-weight: 800 !important;
+    visibility: visible !important;
+}
+
+#bkashBox input#paymentNumber::placeholder,
+#bkashBox input#trxId::placeholder {
+    color: #475569 !important;
+    opacity: 1 !important;
+}
+
+
+/* ===== Bkash Payment Card ===== */
+
+#bkashBox {
+    display: block;
+    margin-top: 18px !important;
+    padding: 22px !important;
+    background: linear-gradient(145deg, #ffffff, #f1f8ff) !important;
+    border: 1px solid #d6eaff !important;
+    border-radius: 22px !important;
+
+    box-shadow:
+        0 18px 40px rgba(15,23,42,.12),
+        inset 0 1px 0 rgba(255,255,255,.95) !important;
+}
+
+#bkashBox h3 {
+    color: #111827 !important;
+    font-weight: 800 !important;
+}
+
+#bkashBox p {
+    color: #475569 !important;
+}
+

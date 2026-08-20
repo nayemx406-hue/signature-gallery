@@ -9,39 +9,133 @@
 
 <body>
 
-<header>
-    <a href="#home" class="brand-name">SIGNATURE <span>GALLERY</span></a>
+<header class="sg-header">
 
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#shop">Shop</a>
-        <a href="#contact">Contact</a>
-        <button class="cart-button" onclick="openCart()">
-            🛒 Cart <span id="cartCount">0</span>
-        </button>
-    </nav>
+    <button class="menu-btn" onclick="openMenu()">
+        ☰
+    </button>
+
+    <a href="#home" class="sg-brand">
+        SIGNATURE <span>GALLERY</span>
+    </a>
+
+    <button class="header-cart" onclick="openCart()">
+        🛒 <span id="cartCount">0</span>
+    </button>
+
 </header>
 
-<section class="hero" id="home">
-    <div class="hero-image"></div>
+<div class="side-menu" id="sideMenu">
+
+    <button class="close-menu" onclick="closeMenu()">✕</button>
+
+    <h2>SIGNATURE<br>GALLERY</h2>
+
+    <a href="#home">🏠 Home</a>
+    <a href="#shop">🛍 Shop</a>
+    <a href="#">🔥 Special Products</a>
+    <a href="#">✨ New Arrival</a>
+    <a href="#">⭐ Recommended</a>
+    <a href="#">❄ Winter Collection</a>
+    <a href="#">☀ Summer Collection</a>
+    <a href="#">🎁 Eid Special</a>
+    <a href="#">📦 Track Order</a>
+    <a href="#contact">📞 Contact</a>
+    <a href="https://wa.me/8801717721716">💬 WhatsApp</a>
+    <a href="#">📍 Location</a>
+    <a href="#">👨‍💻 Developer</a>
+
+</div>
+
+<section class="hero-slider" id="home">
+
+<div class="slider-wrapper">
+
+<div class="slide active">
+<img src="images/banner1.png">
+</div>
+
+<div class="slide">
+<img src="images/banner2.png">
+</div>
+
+<div class="slide">
+<img src="images/banner3.png">
+</div>
+
+</div>
+
 </section>
 
-<section class="hero-info">
-    <span>THE ART OF STYLE • 2026</span>
-    <h1>Luxury Fashion.<br><em>Defined By You.</em></h1>
-    <p>Discover timeless fashion crafted for your unique style.</p>
-    <a href="#shop" class="hero-btn">ORDER NOW <b>→</b></a>
-
-    <div class="hero-dots">
-        <b class="active"></b>
-        <b></b>
-        <b></b>
-    </div>
-</section>
 
 <section id="shop" class="shop-section">
 
-    <div class="section-heading">
+    
+<section class="category-section">
+
+<div class="category-title">
+    <span>EXPLORE COLLECTION</span>
+    <h2>Shop By Category</h2>
+    <p>Choose your favourite style</p>
+</div>
+
+<div class="category-scroll">
+
+<a class="category-circle" href="#productList">
+<img src="images/products/product-01-main.png">
+<p>Premium<br>Shirt</p>
+</a>
+
+<a class="category-circle" href="#productList">
+<img src="images/products/product-02/product-02-main.png">
+<p>Polo<br>Collection</p>
+</a>
+
+<a class="category-circle" href="#productList">
+<img src="images/banner1.png">
+<p>Pant<br>Collection</p>
+</a>
+
+<a class="category-circle" href="#productList">
+<img src="images/banner2.png">
+<p>T-Shirt<br>Collection</p>
+</a>
+
+<a class="category-circle" href="#productList">
+<img src="images/banner3.png">
+<p>Clearance</p>
+</a>
+
+
+<a class="category-circle" href="#productList">
+<img src="images/products/product-01-main.png">
+<p>Winter<br>Collection</p>
+</a>
+
+<a class="category-circle" href="#productList">
+<img src="images/products/product-02/product-02-main.png">
+<p>Eid<br>Special</p>
+</a>
+
+<a class="category-circle" href="#productList">
+<img src="images/banner1.png">
+<p>New<br>Arrival</p>
+</a>
+
+<a class="category-circle" href="#productList">
+<img src="images/banner2.png">
+<p>Premium<br>Wear</p>
+</a>
+
+<a class="category-circle" href="#productList">
+<img src="images/banner3.png">
+<p>Special<br>Offer</p>
+</a>
+</div>
+
+</section>
+
+<div class="section-heading">
         <span>SPECIAL SELECTION</span>
         <h2>Special Offers</h2>
         <p>Limited pieces selected for our customers.</p>

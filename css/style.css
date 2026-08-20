@@ -6052,3 +6052,22 @@ body {
     transform: scale(1.04);
 }
 
+
+/* FIX: Checkout dropdown visibility */
+.checkout-box select {
+    background-color: #222 !important;
+    color: #fff !important;
+    -webkit-appearance: auto;
+    appearance: auto;
+}
+
+.checkout-box select option {
+    background-color: #222 !important;
+    color: #fff !important;
+}
+
+.checkout-box select option:checked {
+    background-color: #d4af37 !important;
+    color: #111 !important;
+}
+

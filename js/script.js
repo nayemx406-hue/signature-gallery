@@ -1246,11 +1246,12 @@ const locationData = {
     }
 };
 
-const divisionSelect = document.getElementById("division");
-const districtSelect = document.getElementById("district");
-const upazilaSelect = document.getElementById("upazila");
+document.addEventListener("DOMContentLoaded", () => {
+    const divisionSelect = document.getElementById("division");
+    const districtSelect = document.getElementById("district");
+    const upazilaSelect = document.getElementById("upazila");
 
-if (divisionSelect && districtSelect && upazilaSelect) {
+    if (!divisionSelect || !districtSelect || !upazilaSelect) return;
 
     divisionSelect.onchange = function () {
 
@@ -1298,5 +1299,5 @@ if (divisionSelect && districtSelect && upazilaSelect) {
     };
 
     console.log("LOCATION SELECTORS READY");
-}
+});
 

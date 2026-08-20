@@ -6382,16 +6382,104 @@ body {
 }
 
 
-/* Hide extra payment instruction text */
-#bkashBox > p,
-#bkashBox > h3,
-#codBox > h3,
-#codBox > p {
-    display: none !important;
+/* ===== PREMIUM PAYMENT UI ===== */
+
+#bkashBox,
+#codBox {
+    margin-top: 16px;
+    padding: 20px;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #ffffff, #f4f7fb);
+    border: 1px solid #e3e8f0;
+    box-shadow:
+        0 12px 30px rgba(15, 23, 42, .10),
+        inset 0 1px 0 rgba(255,255,255,.9);
 }
 
-/* Clean premium payment inputs */
-#bkashBox {
-    margin-top: 14px;
+#bkashBox h3,
+#codBox h3 {
+    display: block !important;
+    margin: 0 0 12px;
+    font-size: 20px;
+    font-weight: 800;
+    color: #172033;
 }
+
+#bkashBox > p,
+#codBox > p {
+    display: block !important;
+    margin: 8px 0;
+    color: #667085;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+#bkashBox > p:first-of-type {
+    padding: 14px 16px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #eaf3ff, #f7fbff);
+    border: 1px solid #d7e7ff;
+    color: #475467;
+}
+
+#bkashBox > p:first-of-type b {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 21px;
+    letter-spacing: 1px;
+    color: #1877f2;
+}
+
+#bkashBox label {
+    color: #344054;
+    font-weight: 700;
+}
+
+#bkashBox input {
+    background: #fff !important;
+    color: #172033 !important;
+    border: 1px solid #d9e1ec !important;
+    border-radius: 13px !important;
+    box-shadow: 0 5px 14px rgba(15,23,42,.06);
+}
+
+#bkashBox input:focus {
+    border-color: #1877f2 !important;
+    box-shadow:
+        0 0 0 4px rgba(24,119,242,.10),
+        0 8px 20px rgba(24,119,242,.10);
+}
+
+#codBox {
+    text-align: center;
+}
+
+#codBox h3 {
+    color: #1877f2;
+}
+
+#codBox p {
+    color: #667085;
+}
+
+/* Premium order summary */
+.order-summary {
+    margin-top: 20px;
+    padding: 16px 18px;
+    border-radius: 18px;
+    background: #ffffff;
+    border: 1px solid #e4e9f0;
+    box-shadow: 0 10px 28px rgba(15,23,42,.08);
+}
+
+.order-summary div {
+    padding: 11px 0;
+}
+
+.order-summary .grand-total {
+    margin-top: 6px;
+    padding-top: 16px;
+    font-size: 21px;
+}
+
 

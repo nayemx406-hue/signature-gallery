@@ -5,24 +5,24 @@ const specialProducts = [
         name: "Signature Product 01",
         description: "Premium US Polo Collection",
         price: 999,
-        image: "images/products/product-01-1.png"
+        image: "images/products/product-01-1.png", category: "Branded Collection"
     },
     {
         name: "Signature Product 02",
         description: "Premium T Shirt Collection",
         price: 799,
-        image: "images/products/product-02/product-02-main.png"
+        image: "images/products/product-02/product-02-main.png", category: "Summer Collection"
     },
     {
         name: "Signature Product 03",
         description: "Product details coming soon",
-        price: 2600,
+        price: 2600, category: "Premium Collection",
         image: ""
     },
     {
         name: "Signature Product 04",
         description: "Product details coming soon",
-        price: 3000,
+        price: 3000, category: "Clearance Sale",
         image: ""
     }
 ];
@@ -66,7 +66,7 @@ function productCard(product, index, type) {
 
             <div class="sg-product-info">
                 <span class="sg-product-category">
-                    ${type === "special" ? "SPECIAL COLLECTION" : "SIGNATURE COLLECTION"}
+                    ${product.category || (type === "special" ? "SPECIAL COLLECTION" : "SIGNATURE COLLECTION")}
                 </span>
 
                 <h3>${product.name}</h3>
@@ -1300,4 +1300,121 @@ document.addEventListener("DOMContentLoaded", () => {
 
     console.log("LOCATION SELECTORS READY");
 });
+
+
+
+// ===== SIDE MENU =====
+
+function openMenu(){
+    document
+    .getElementById("sideMenu")
+    .classList.add("active");
+}
+
+
+function closeMenu(){
+    document
+    .getElementById("sideMenu")
+    .classList.remove("active");
+}
+
+
+// Close menu when clicking outside links
+document.addEventListener("click", function(e){
+
+    const menu = document.getElementById("sideMenu");
+    const button = document.querySelector(".menu-btn");
+
+    if(
+        menu &&
+        !menu.contains(e.target) &&
+        !button.contains(e.target)
+    ){
+        menu.classList.remove("active");
+    }
+
+});
+
+
+
+// ===== HERO SLIDER =====
+
+let currentSlide = 0;
+
+const slides = document.querySelectorAll(".slide");
+const dots = document.querySelectorAll(".slider-dots b");
+
+function showSlide(index){
+
+    if(!slides.length) return;
+
+    slides.forEach(slide=>{
+        slide.classList.remove("active");
+    });
+
+    dots.forEach(dot=>{
+        dot.classList.remove("active");
+    });
+
+
+    currentSlide = index;
+
+
+    slides[currentSlide].classList.add("active");
+
+    if(dots[currentSlide]){
+        dots[currentSlide].classList.add("active");
+    }
+
+}
+
+
+function nextSlide(){
+
+    currentSlide++;
+
+    if(currentSlide >= slides.length){
+        currentSlide = 0;
+    }
+
+    showSlide(currentSlide);
+
+}
+
+
+function prevSlide(){
+
+    currentSlide--;
+
+    if(currentSlide < 0){
+        currentSlide = slides.length - 1;
+    }
+
+    showSlide(currentSlide);
+
+}
+
+
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+    const next = document.querySelector(".slider-next");
+    const prev = document.querySelector(".slider-prev");
+
+
+    if(next){
+        next.onclick = nextSlide;
+    }
+
+
+    if(prev){
+        prev.onclick = prevSlide;
+    }
+
+
+    setInterval(nextSlide,4000);
+
+
+});
+
 
